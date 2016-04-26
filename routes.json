@@ -1,0 +1,288 @@
+[
+    {
+        "controller": "adminExerciseController",
+        "action": "createAction"
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "displayAction",
+        "urlVars": 1
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "deleteAction",
+        "postVars": ["id"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "exerciseJsonAction",
+        "getVars": ["exerciseName", "controls"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "exerciseJsonAction",
+        "getVars": ["exerciseName", "controls"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "exerciseListPanelAction",
+        "getVars": ["page", "term", "filter", "sort"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "indexAction"
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "exerciseListJsonAction"
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "insertAction",
+        "postVars": ["title","diff","descr","focus","images"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "insertAction",
+        "postVars": ["title","diff","descr","focus"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "updateAction",
+        "postVars": ["id","title","diff","descr","focus","images"]
+    },
+    {
+        "controller": "adminExerciseController",
+        "action": "updateAction",
+        "postVars": ["id","title","diff","descr","focus"]
+    },
+    {
+        "controller": "adminHomeController",
+        "action": "indexAction"
+    },
+    {
+        "controller": "MediaController",
+        "action": "displayImageAction",
+        "urlVars": 1
+    },
+    {
+        "controller": "MediaController",
+        "action": "deleteImageAction",
+        "postVars": ["id"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "getImageJSONAction",
+        "getVars": ["imageName", "controls"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "getImageJSONAction",
+        "getVars": ["imageName"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "indexAction"
+    },
+    {
+        "controller": "MediaController",
+        "action": "insertImageJSONAction",
+        "postVars": ["controls"],
+        "fileVars": ["image"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "insertImageJSONAction",
+        "fileVars": ["image"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "imagePanelJsonAction",
+        "getVars": ["term", "filter", "page", "template"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "imagePanelJsonAction",
+        "getVars": ["term", "filter", "page"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "searchImageJsonAction",
+        "getVars": ["term", "firstLetter"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "updateImageAction",
+        "fileVars": ["image"],
+        "postVars": ["id"]
+    },
+    {
+        "controller": "MediaController",
+        "action": "updateImageNameAction",
+        "postVars":["id", "imageName"]
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "createAction"
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "deleteAction",
+        "postVars": ["id"] 
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "displayAction",
+        "urlVars": 1
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "displayAllAction"
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "insertAction",
+        "postVars": ["name","descr"]
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "updateAction",
+        "postVars": ["name","descr","id"]
+    },
+    {
+        "controller": "adminProtocolController",
+        "action": "protocolListPanelAction",
+        "getVars": ["page", "term", "filter", "sort"]
+    },
+    {
+        "controller": "adminUserController",
+        "action": "addUserAction",
+        "postVars": ["brugernavn", "email", "password", "password2", "role"]
+    },
+    {
+        "controller": "adminUserController",
+        "action": "deleteUserAction",
+        "postVars": ["brugernavn", "email"]
+    },
+    {
+        "controller": "adminUserController",
+        "action": "createUserAction"
+    },
+    {
+        "controller": "adminUserController",
+        "action": "createUserAction",
+        "getVars": ["status"]
+    },
+    {
+        "controller": "adminUserController",
+        "action": "indexAction",
+        "getVars": ["status"]
+    },
+    {
+        "controller": "adminUserController",
+        "action": "indexAction"
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "createAction"
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "deleteAction",
+        "postVars": ["id"]
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "displayAction",
+        "getVars": [],
+        "postVars": [],
+        "urlVars": 1
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "indexAction",
+        "getVars": [],
+        "postVars": [],
+        "urlVars": 0
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "insertAction",
+        "postVars": ["name","diff","focus","descr","protocol","exercises"]
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "insertAction",
+        "postVars": ["name","diff","focus","descr","protocol"]
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "updateAction",
+        "postVars": ["id","name","diff","focus","descr","protocol","exercises"]
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "updateAction",
+        "postVars": ["id","name","diff","focus","descr","protocol"]
+    },
+    {
+        "controller": "adminWorkoutController",
+        "action": "workoutListJsonAction",
+        "getVars": ["page", "term", "filter"]
+    },
+    {
+        "controller": "appController",
+        "action": "WorkoutAction",
+        "urlVars": 1
+    },
+    {
+        "controller": "appController",
+        "action": "GenerateWorkoutAction",
+        "getVars": ["diff", "focus", "time"]
+    },
+    {
+        "controller": "appController",
+        "action": "GenerateWorkoutAction"
+    },
+    {
+        "controller": "appController",
+        "action": "WorkoutAction"
+    },
+    {
+        "controller": "jsonController",
+        "action": "getWorkoutByIdAction",
+        "urlVars": 1
+    },
+    {
+        "controller": "jsonController",
+        "action": "searchExerciseAction",
+        "getVars": ["term","diff","focus"]
+    },
+    {
+        "controller": "jsonController",
+        "action": "searchWorkoutAction",
+        "getVars": ["term","diff","focus"]
+    },
+    {
+        "controller": "loginController",
+        "action": "indexAction",
+        "getVars": [],
+        "postVars": [],
+        "urlVars": 0
+    },
+    {
+        "controller": "loginController",
+        "action": "loginAction",
+        "getVars": [],
+        "postVars": ["brugernavn","kodeord","login"],
+        "urlVars": 0
+    },
+    {
+        "controller": "settingController",
+        "action": "fetchDBDumpAction"
+    },
+    {
+        "controller": "settingController",
+        "action": "indexAction"
+    }
+]
