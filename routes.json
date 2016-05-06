@@ -278,6 +278,10 @@
         "urlVars": 0
     },
     {
+        "controller": "loginController",
+        "action": "logoutAction"
+    },
+    {
         "controller": "settingController",
         "action": "fetchDBDumpAction"
     },

@@ -44,11 +44,11 @@
 		<label class="col-sm-4 col-md-2 control-label">Billeder</label> 
 		<div class="col-sm-8 col-md-6">
 			<span class="btn btn-success btn-file">
-    			Upload billede<input class="btn-ex-upload" type="file" data-target-url="/mt/Media/insertImageJSON/"></input>
+    			Upload billede<input class="btn-ex-upload" type="file" data-target-url="<?php URLHelper::renderUrl('/Media/insertImageJSON/'); ?>"></input>
 			</span>
 			<!--button type="button" class="btn btn-info" id="">Importer fra mediearkiv</button-->
 			<div class="input-group pull-right">
-	      		<input id="input-import-image1" type="text" name="imageName" class="form-control input-import-image autocomplete autocomplete-thumb sub-query" value="" data-url="/mt/media/searchImageJson?term=" autocomplete="off" />
+	      		<input id="input-import-image1" type="text" name="imageName" class="form-control input-import-image autocomplete autocomplete-thumb sub-query" value="" data-url="<?php URLHelper::renderUrl('/media/searchImageJson?term='); ?>" autocomplete="off" />
 	      		<span class="input-group-btn btn-import-image">
 	        		<button class="btn btn-default btn-import-image" for="input-import-image1" type="button">Importer fra mediearkiv</button>
 	      		</span>

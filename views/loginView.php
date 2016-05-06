@@ -4,7 +4,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading"><h1 class="h4">Admin Login</h1></div>
                         <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/mt/Login/login">
+                        <form class="form-horizontal" role="form" method="POST" action="<?php URLHelper::renderUrl('/Login/login'); ?>">
                             <fieldset>
                             <div class="form-group">
                               <label class="col-xs-4 control-label" for="brugernavn">Brugernavn</label>  

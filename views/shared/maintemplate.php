@@ -11,7 +11,7 @@
     
 
 	<title>MT ADMIN</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script-->
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -28,8 +28,8 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="<?php URLHelper::renderURL('/adminHome/'); ?>" class="navbar-nav pull-right">Dashboard</a></li>
-              <li><a href="<?php URLHelper::renderURL(''); ?>" class="navbar-nav pull-right">Settings</a></li>
-              <li><a href="<?php URLHelper::renderURL('auth/logout'); ?>" class="navbar-nav pull-right">Log Out</a></li>
+              <li><a href="<?php URLHelper::renderURL('/app/generateworkout'); ?>" class="navbar-nav pull-right">Generator</a></li>
+              <li><a href="<?php URLHelper::renderURL('/login/logout'); ?>" class="navbar-nav pull-right">Log Out</a></li>
             </ul>
         </div><!--/.nav-collapse -->
 

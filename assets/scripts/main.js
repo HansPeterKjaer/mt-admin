@@ -1,5 +1,7 @@
 'use strict'
 
+MT.BasePath = (location.hostname  == 'localhost') ? '/mt' : '';
+
 var doc = document;
 var win = window;
 
@@ -76,7 +78,7 @@ for (var i = 0; i < imgImportSubmits.length; ++i){
   if (!input) continue;
 
   submitBtn.addEventListener('click', function(){
-    var url = '/mt/media/getImageJSON?imageName=' + input.value + '&controls=true';
+    var url = MT.BasePath + '/media/getImageJSON?imageName=' + input.value + '&controls=true';
     ajax.get(url, exImgUploadCB);
   });
 }

@@ -4,7 +4,7 @@ class LoginController extends BaseController {
 	public function indexAction(){
 		$viewmodel = $this->modelFactory->buildObject('BaseViewModel');
 
-		$this->view->output('loginView', $viewmodel, 'Shared/emptyTemplate');
+		$this->view->output('loginView', $viewmodel, 'shared/emptyTemplate');
 	}
 	public function loginAction($user, $pw, $login){
 		$viewmodel = null;
@@ -13,9 +13,15 @@ class LoginController extends BaseController {
 		    setcookie('authID', $status['hash'], $status['expire'], '/');
 		    header('Location: ' . URLHelper::getURL('/adminHome'));
 		} else {
-		    header('Location: ' . URLHelper::getURL('login/index'));
+		    header('Location: ' . URLHelper::getURL('/login'));
 		}
 	}
+	protected function logoutAction(){
+		$this->auth->logout($_COOKIE['authID']);
+		setcookie('authID', '', time() - 3600, '/');
+
+		$this->view->output('logoutView', $viewmodel, 'shared/emptyTemplate');
+	}	
 }
 
 ?>

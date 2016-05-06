@@ -5,7 +5,7 @@
 
 <h1>Opdater Program</h1>
 
-<form id="protocol-form" class="form-horizontal" method="POST" action="/mt/AdminProtocol/update">
+<form id="protocol-form" class="form-horizontal" method="POST" action="<?php URLHelper::renderUrl('/AdminProtocol/update'); ?>">
 	<input id="" name="id" type="hidden" value="<?php echo $pr->id ?>" />
 	<div class="form-group">
 		<label for="inputName" class="col-sm-4 col-md-2 control-label">Navn</label>			

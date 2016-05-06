@@ -6,7 +6,7 @@ var win = window;
 var ajax = require('./ajax.js');
 
 var filterElms, searchInput, searchBtn, loadMoreBtn, panel;
-var searchTerm = '', filterValue='', sortValue = '', page = 1, baseUrl = '//localhost/mt/Media/searchImages';
+var searchTerm = '', filterValue='', sortValue = '', page = 1, baseUrl = MT.BasePath + '/Media/searchImages';
 
 var currentRequest = null;
 

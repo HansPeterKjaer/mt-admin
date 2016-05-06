@@ -1,6 +1,6 @@
 <?php
 
-class AuthController extends SecureController {
+class _AuthController extends SecureController {
 	protected function registerAction(){
 		$viewmodel = null;
 		#$this->returnPureView("loginView",$viewmodel);

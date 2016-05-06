@@ -5,7 +5,7 @@ class View{
 	public function __construct(){
 
 	}
-	public function output($view, $viewModel, $template = 'Shared/maintemplate'){
+	public function output($view, $viewModel, $template = 'shared/maintemplate'){
 		$viewFile = "views/{$view}.php";
 
 		if(!file_exists($viewFile)){ 

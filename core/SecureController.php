@@ -9,7 +9,7 @@ abstract class SecureController extends BaseController{
 	}
 	private function chkCookie(){
 		if(!isset($_COOKIE['authID']) ){
-    		header('Location: /mt/login');
+    		header("Location: ${URLHelper::getBasePath()}/login");
     		exit();
 		}
 		if(!$this->auth->checkSession($_COOKIE['authID'])) {

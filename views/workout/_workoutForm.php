@@ -57,9 +57,9 @@
 		<label for="input-import-exercise" class="col-sm-4 col-md-2 control-label">Øvelser</label>			
 		<div class="col-sm-8 col-md-6">
 			<div class="input-group">
-	      		<input id="input-import-exercise" type="text" name="exercise" class="form-control autocomplete" value="" data-url="/mt/AdminExercise/exerciseListJson" autocomplete="off" />
+	      		<input id="input-import-exercise" type="text" name="exercise" class="form-control autocomplete" value="" data-url="<?php URLHelper::renderUrl('/AdminExercise/exerciseListJson'); ?>" autocomplete="off" />
 	      		<span class="input-group-btn">
-	        		<button class="btn btn-default btn-import-exercise" for="input-import-exercise" data-url="/mt/adminexercise/ExerciseJSON?controls=true" type="button">Importer øvelse</button>
+	        		<button class="btn btn-default btn-import-exercise" for="input-import-exercise" data-url="<?php URLHelper::renderUrl('/adminexercise/ExerciseJSON?controls=true'); ?>" type="button">Importer øvelse</button>
 	      		</span>
 	      	</div>
 	    </div>

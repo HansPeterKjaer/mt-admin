@@ -18,6 +18,14 @@
 
 <h1>Seneste Øvelser</h1>
 <table class="table table-striped frontpage-exercise-table">
+	<thead>
+		<tr>
+			<th>Navn</th>
+			<th>Sværhed</th>
+			<th>Fokus</th>		
+			<th></th>
+		</tr>
+	</thead>
 	<tbody>
 		<?php ViewHelper::renderPartial("exercise/_exerciseList", $viewModel->exercises); ?>
 	</tbody>	
@@ -25,6 +33,12 @@
 
 <h1>Seneste Programmer</h1>
 <table class="table table-striped frontpage-protocol-table">
+	<thead>
+		<tr>
+			<th>Navn</th>
+			<th></th>
+		</tr>
+	</thead>
 	<tbody>
 		<?php ViewHelper::renderPartial("protocol/_protocolList", $viewModel->protocols); ?>
 	</tbody>	

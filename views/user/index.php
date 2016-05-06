@@ -24,7 +24,7 @@
 			<td><?php echo $usr->username ?></td>
 			<td><?php echo $usr->email ?></td>
 			<td>
-				<form method="POST" action="/mt/AdminUser/deleteUser" class="inline"><input type="hidden" name="brugernavn" value="<?php echo $usr->username ?>" /><input type="hidden" name="email" value="<?php echo $usr->email ?>" /><input type="submit" id="btn_delete" class="btn btn-sm btn-danger" value="Slet" /></form>
+				<form method="POST" action="<?php URLHelper::renderUrl('/AdminUser/deleteUser'); ?>" class="inline"><input type="hidden" name="brugernavn" value="<?php echo $usr->username ?>" /><input type="hidden" name="email" value="<?php echo $usr->email ?>" /><input type="submit" id="btn_delete" class="btn btn-sm btn-danger" value="Slet" /></form>
 				<button id="btn_update" class="btn btn-sm btn-success">Opdater</button>
 			</td>
 		</tr>

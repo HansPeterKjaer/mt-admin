@@ -42,10 +42,10 @@ class AdminUserController extends SecureController {
 
 	protected function deleteUserAction($brugernavn, $email){
 		if( $this->auth->deleteUser($brugernavn, $email)){
-			header('Location: /mt/adminUser/index?status=delete');
+			header("Location: {URLHelper::getBasePath();}/adminUser/index?status=delete");
 		}
 		// Note should be json???
-		header('Location: /mt/adminUser/index?status=err');
+		header("Location: {URLHelper::getBasePath();}/adminUser/index?status=err");
 	}
 	protected function updateUserAction($brugernavn, $email, $password){
 
