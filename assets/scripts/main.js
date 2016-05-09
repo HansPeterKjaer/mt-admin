@@ -1,9 +1,10 @@
 'use strict'
 
-MT.BasePath = (location.hostname  == 'localhost') ? '/mt' : '';
-
 var doc = document;
 var win = window;
+
+win.MT = {};
+win.MT.BasePath = (location.hostname  == 'localhost') ? '/mt' : '';
 
 var ajaxPanel = require('./modules/ajaxPanel.js');
 var imageUploader = require('./modules/uploadImage.js');
@@ -20,9 +21,25 @@ for (var i = 0; i < ajaxPanels.length; ++i) {
 }
 
 
+var imgUploadCB = function(status, data){
+  data = JSON.parse(data);
+
+  if(data.status == true){
+    var imagePanel = doc.querySelector('.ajax-panel');
+    
+    imagePanel.insertAdjacentHTML('afterBegin', data.markup);
+
+    var lastChild = imagePanel.querySelector('.itemcontainer:last-child');
+    lastChild.remove();
+  }
+  else{
+    alertMsg.init(data.msg, doc.querySelector('.upload-status'));   // improve selector! 
+  }
+}
+
 var uploadBtns = doc.querySelectorAll('.btn-upload-image');
 for (var i = 0; i < uploadBtns.length; ++i) {
-	imageUploader.init(uploadBtns[i]);
+	imageUploader.init(uploadBtns[i], imgUploadCB);
 }
 
 
@@ -43,11 +60,11 @@ for (var i = 0; i < autoCompleteInputs.length; ++i){
   console.log("init" + subQuery + thumbs+url);
 }
 
-// Create exercise: upload image
+// Create exercise: upload image callback
 var exImgUploadCB = function(status, data){
 	data = JSON.parse(data);
-  console.log(data);
-	if(data.status == 1){
+
+	if(data.status == true){
 		var imageContainer = doc.querySelector('#exercise-images');
 		imageContainer.insertAdjacentHTML('beforeend', data.markup);
 		imageContainer.querySelector('.imageplaceholder') && imageContainer.querySelector('.imageplaceholder').remove();

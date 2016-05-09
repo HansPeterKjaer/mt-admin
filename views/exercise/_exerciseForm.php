@@ -44,7 +44,7 @@
 		<label class="col-sm-4 col-md-2 control-label">Billeder</label> 
 		<div class="col-sm-8 col-md-6">
 			<span class="btn btn-success btn-file">
-    			Upload billede<input class="btn-ex-upload" type="file" data-target-url="<?php URLHelper::renderUrl('/Media/insertImageJSON/'); ?>"></input>
+    			Upload billede<input class="btn-ex-upload" type="file" data-ex-controls="true" data-target-url="<?php URLHelper::renderUrl('/Media/insertImageJSON/'); ?>"></input>
 			</span>
 			<!--button type="button" class="btn btn-info" id="">Importer fra mediearkiv</button-->
 			<div class="input-group pull-right">

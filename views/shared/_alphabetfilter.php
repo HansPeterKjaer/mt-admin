@@ -31,6 +31,6 @@
 
 <label for="sort-select">Sorter</label>
 <select class="ajax-panel-sort">
-	<option value="date desc">Seneste</option>
-	<option value="name asc">Alfabetisk</option>		
+	<option value="date-desc">Seneste</option>
+	<option value="name-asc">Alfabetisk</option>		
 </select>

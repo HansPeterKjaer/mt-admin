@@ -35,7 +35,7 @@ class MediaModelMapper extends BaseModelMapper{
 		}
 	}
 
-	public function search(MediaListModel &$mediaList, $term, $firstLetter = '', $page = 1){
+	public function search(MediaListModel &$mediaList, $term, $firstLetter = '', $page = 1, $sort = null){
 		$dbh = $this->dbhandle;
 		//$dbh->setAttribute( PDO::ATTR_CASE, PDO::CASE_NATURAL );
 		$itemsPerPage = 24;
@@ -44,6 +44,11 @@ class MediaModelMapper extends BaseModelMapper{
 		$max = ($page === 0) ? 999999 : $skip + $itemsPerPage; // if page == 0 -> take all 
 		$term = "%$term%";
 		$firstLetter = "$firstLetter%";
+
+		$sortStatement = 'ORDER BY img_id DESC'; // default
+		//if (strtolower($sort) == 'date asc'){ $sortStatement = 'ORDER BY img_id ASC'; }
+		if (strtolower($sort) == 'name-asc'){ $sortStatement = 'ORDER BY img_name ASC'; }
+		if (strtolower($sort) == 'name-desc'){ $sortStatement = 'ORDER BY img_name DESC'; }
 		
 		try {
 			$stmt = $dbh->prepare('SELECT COUNT(*) FROM image 
@@ -56,14 +61,14 @@ class MediaModelMapper extends BaseModelMapper{
 	        $stmt->execute();
 	        $rows = $stmt->fetchColumn(); 
 
-			$stmt = $dbh->prepare('SELECT img_id as id, img_name as imageName
+			$stmt = $dbh->prepare("SELECT img_id as id, img_name as imageName
 									FROM image 
 									WHERE 
 										img_name LIKE :term AND 
 										img_name LIKE :firstLetter
-										ORDER BY img_name
+										{$sortStatement}
 										LIMIT :skip , :max
-								  ');
+								  ");
 			
 			$stmt->bindParam(':term', $term);
 			$stmt->bindParam(':firstLetter', $firstLetter);

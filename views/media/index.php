@@ -8,6 +8,7 @@
 	    </div>
 	</div>
 	<h1>Mediearkiv</h1>
+	<span class="upload-status"></span>
   </div>
 </div>
 

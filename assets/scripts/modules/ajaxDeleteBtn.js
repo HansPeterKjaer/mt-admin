@@ -21,7 +21,7 @@ function deleteExCB(evt){
   
   var parentRow = parent(this, 'tr, .item');
   if(parentRow == null){
-    win.console && console.log('no wrapper defined!');
+    console.log('no wrapper defined!');
     return;
   }
 
@@ -39,7 +39,6 @@ function deleteExCB(evt){
     else{
       parentRow.classList.remove('opaque');
       alertMsg.init(data.msg, doc.querySelector('.table.table-striped'));
-      // perhaps an error message??
     }
   }
 }

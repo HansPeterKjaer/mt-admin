@@ -88,7 +88,7 @@
         "controller": "MediaController",
         "action": "insertImageJSONAction",
         "postVars": ["controls"],
-        "fileVars": ["image"]
+        "fileVars": ["image", "thumb"]
     },
     {
         "controller": "MediaController",
@@ -98,7 +98,7 @@
     {
         "controller": "MediaController",
         "action": "imagePanelJsonAction",
-        "getVars": ["term", "filter", "page", "template"]
+        "getVars": ["term", "filter", "page", "sort"]
     },
     {
         "controller": "MediaController",

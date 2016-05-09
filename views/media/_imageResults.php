@@ -1,5 +1,6 @@
 		
 <?php 
+echo $viewModel->controls;
 	foreach($viewModel->items as $img){ 
 ?>
 
@@ -11,7 +12,7 @@
 					<a href='<?php URLHelper::renderUrl("media/displayImage/$img->id"); ?>' ><?php echo($img->imageName) ?></a>
 				</p>
 <?php
-	if($viewModel->controls){
+	if($viewModel->controls != false){
 ?>
 				<button class="btn-move-left btn btn-xs btn-primary">
 					<i class="glyphicon glyphicon-arrow-left"></i>

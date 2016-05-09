@@ -158,9 +158,9 @@ class ExerciseModelMapper extends BaseModelMapper{
 		if ($sqlCondition != ''){   $sqlCondition =  'WHERE ' . $sqlCondition; };
 		
 		$sortStatement = 'ORDER BY ex_id DESC'; // default
-		if (strtolower($sort) == 'date asc'){ $sortStatement = 'ORDER BY ex_id ASC'; }
-		if (strtolower($sort) == 'name asc'){ $sortStatement = 'ORDER BY ex_name ASC'; }
-		if (strtolower($sort) == 'name desc'){ $sortStatement = 'ORDER BY ex_name DESC'; }
+		if (strtolower($sort) == 'date-asc'){ $sortStatement = 'ORDER BY ex_id ASC'; }
+		if (strtolower($sort) == 'name-asc'){ $sortStatement = 'ORDER BY ex_name ASC'; }
+		if (strtolower($sort) == 'name-desc'){ $sortStatement = 'ORDER BY ex_name DESC'; }
 
 		$term = (!empty($term)) ? "%$term%" : $term;
 		$firstLetter = (!empty($firstLetter)) ? "$firstLetter%" : $firstLetter;

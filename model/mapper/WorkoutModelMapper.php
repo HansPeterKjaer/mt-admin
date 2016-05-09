@@ -162,9 +162,9 @@ class WorkoutModelMapper extends BaseModelMapper{
 		if ($sqlCondition != ''){   $sqlCondition =  'WHERE ' . $sqlCondition; };
 
 		$sortStatement = 'ORDER BY wo_id DESC'; // default
-		if (strtolower($sort) == 'date asc'){ $sortStatement = 'ORDER BY wo_id ASC'; }
-		if (strtolower($sort) == 'name asc'){ $sortStatement = 'ORDER BY wo_name ASC'; }
-		if (strtolower($sort) == 'name desc'){ $sortStatement = 'ORDER BY wo_name DESC'; }
+		if (strtolower($sort) == 'date-asc'){ $sortStatement = 'ORDER BY wo_id ASC'; }
+		if (strtolower($sort) == 'name-asc'){ $sortStatement = 'ORDER BY wo_name ASC'; }
+		if (strtolower($sort) == 'name-desc'){ $sortStatement = 'ORDER BY wo_name DESC'; }
 		if (strtolower($sort) == 'rand'){ $sortStatement = 'ORDER BY RAND()'; }
 		
 		$term = (!empty($term)) ? "%$term%" : $term;

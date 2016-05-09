@@ -12,11 +12,9 @@ class MediaController extends SecureController{
 		$this->view->output('/media/index', $viewModel);
 	}
 	
-/*	public function insertImageJSONAction($image){
-		$this->view->outputJSON($this->uploadImage($image));
-	}
-*/
-	public function insertImageJSONAction($controls = false, $image){
+	public function insertImageJSONAction($controls = false, $image, $thumb){
+		$t_resultData = $this->uploadImage($thumb, null, false, '/thumbs');
+		// what to do if thumb fails?
 		$resultData = $this->uploadImage($image);
 
 		if($resultData['status'] == 1){
@@ -25,7 +23,7 @@ class MediaController extends SecureController{
 			$mediaModel->id = $resultData['data']['id'];
 			$mediaModel->imageName = $resultData['data']['imageName'];
 			$model->items = [$mediaModel];
-			$model->controls = $controls;
+			$model->controls = ($controls === 'true') ? true : false;
 
 			ob_start();
 				$this->view->output('/media/_imageResults', $model , false);			 
@@ -61,17 +59,10 @@ class MediaController extends SecureController{
 		$this->view->outputJSON(['status' => $result, 'id' => $mediaModel->items[0]->id, 'markup' => $html, 'msg' => $msg]);
 	}
 
-	/*public function searchImagesAction($term, $firstLetter, $page, $template = 'false'){
+	public function imagePanelJsonAction($term, $firstLetter, $page, $sort = null){
 		$mediaModel = $this->modelFactory->buildObject('MediaListModel');
 		$mapper = $this->modelFactory->buildMapper('MediaModelMapper');
-		$mapper->search($mediaModel, $term, $firstLetter, $page);
-		$this->view->output('/media/_imageResults', $mediaModel, ($template == 'false') ? false : 'Shared/emptyTemplate');			
-	}*/
-
-	public function imagePanelJsonAction($term, $firstLetter, $page){
-		$mediaModel = $this->modelFactory->buildObject('MediaListModel');
-		$mapper = $this->modelFactory->buildMapper('MediaModelMapper');
-		$mapper->search($mediaModel, $term, $firstLetter, $page);
+		$mapper->search($mediaModel, $term, $firstLetter, $page, $sort);
 		
 		ob_start();
 		$this->view->output('/media/_imageResults', $mediaModel, false);			 
@@ -110,7 +101,6 @@ class MediaController extends SecureController{
 	}
 
 	public function deleteImageAction($id){
-
 		$mapper = $this->modelFactory->buildMapper('MediaModelMapper');
 
 		$status = $mapper->deleteImage($id);
@@ -165,8 +155,8 @@ class MediaController extends SecureController{
 		}
 	}
 
-	private function uploadImage($image, $imageName = null){
-		$targetDir = 'assets/uploads/';
+	private function uploadImage($image, $imageName = null, $addToDB = true, $subPath = ''){
+		$targetDir = 'assets/uploads/' . $subPath;
 		
 		if ($imageName == null){
 			$imageName = basename($image['name']);
@@ -178,32 +168,32 @@ class MediaController extends SecureController{
 		$imageFileType = pathinfo($targetFile,PATHINFO_EXTENSION);
 		$mapper = $this->modelFactory->buildMapper('MediaModelMapper');
 		
+		// upload main image:
 		if(empty($image['tmp_name'])){
 			$msg = 'no imagefile provided';
 		}
-		
+		else if (getimagesize($image['tmp_name']) == false){
+			$msg = 'File is not an image.';
+		}
 		else{
-			$check = getimagesize($image['tmp_name']); // check wether file is image.
-		    
-		    if($check !== false) {
 		        
-	        	$id = $mapper->addImage($imageName);
-	        	
-	        	if($id){
-	        		if (move_uploaded_file($image['tmp_name'], $targetFile)){
-	        			$uploadStatus = 1;
-	        			$msg = "File '$imageName' successfully uploaded. Type: ${check['mime']}. Id: $id ";
-	        		}
-			        else{
-			        	$msg = 'File could not be moved on server';
-			        }	
-	        	}
-	        	else{
-	        		$msg = "Billedet kunne ikke tilføjes til databasen. Billedet findes allerede i databasen";	
-	        	}
-		    } else {
-		        $msg = 'File is not an image.';
-		    }
+        	$id = ($addToDB) ? $mapper->addImage($imageName) : null;
+        	
+        	if($id || $addToDB != true){
+
+        		if (move_uploaded_file($image['tmp_name'], $targetFile)){
+        			$uploadStatus = 1;
+        			$msg = "'$imageName' er nu uploadet. Id: $id ";
+        		}
+		        else{
+		        	$msg = 'File could not be moved on server';
+		        	$mapper->removeImage($imageName);
+		        }	
+        	}
+        	else{
+        		$msg = "Billedet kunne ikke tilføjes til databasen. Billedet findes allerede i databasen";	
+        	}
+		    
 		}
 
 	    return ['status' => $uploadStatus, 'data' => ['imageName' => $imageName, 'id' => $id], 'msg'=> $msg];
