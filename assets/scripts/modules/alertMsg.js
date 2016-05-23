@@ -3,7 +3,7 @@
 var doc = document;
 var win = window;
 
-exports.init = function(message, elm, style, positionAfter){
+exports.init = function(message, elm, style, positionBefore){
 	var style = (typeof style !== 'undefined') ? style : 'alert-danger';
 	var errorWrapper = document.createElement('div');
 	var button = document.createElement('button');
@@ -19,7 +19,7 @@ exports.init = function(message, elm, style, positionAfter){
 	button.addEventListener('click', function cb(evt){ errorWrapper.remove(); }, false)
 	win.setTimeout(function(){ errorWrapper.remove(); }, 5000);
 
-	if(positionAfter === true) 
+	if(positionBefore !== true) 
 		elm = elm.nextSibling;
 	
 	elm.parentNode.insertBefore(errorWrapper, elm);

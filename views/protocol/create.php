@@ -10,7 +10,9 @@
 	<div class="form-group">
 		<label for="inputDescr" class="col-sm-4 col-md-2 control-label">Beskrivelse</label>
 		<div class="col-sm-8 col-md-6">	
-			<textarea class="form-control" id="inputDescr" name="descr" rows="3"/></textarea>
+			<?php ViewHelper::renderPartial("shared/scribetoolbar", $viewModel);?>
+			<div class="form-control wysiwyg" id="inputDescr"></div>
+			<textarea name="descr"></textarea>
 		</div>
 	</div>
 	<div class="form-group">

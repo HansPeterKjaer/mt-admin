@@ -16,5 +16,5 @@ module.exports = function (form){
 			var target = doc.querySelector(data.input) || doc.querySelector('.form-msg') || form;			
 			alertMsg.init(data.msg, target, msgClass, true); 
 	  	});
-	});
+	}, false);
 }

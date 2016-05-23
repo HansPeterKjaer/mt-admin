@@ -37,7 +37,9 @@
 	<div class="form-group">
 		<label for="inputDescr" class="col-sm-4 col-md-2 control-label">Beskrivelse</label>
 		<div class="col-sm-8 col-md-6">	
-			<textarea class="form-control" id="inputDescr" name="descr" rows="3"/><?php if(isset($ex)){ echo $ex->descr; } ?></textarea>
+			<?php ViewHelper::renderPartial("shared/scribetoolbar", $viewModel);?>
+			<div class="form-control wysiwyg" id="input-descr" ><?php if(isset($ex)){ echo htmlspecialchars_decode($ex->descr, ENT_HTML5); } ?></div>
+			<textarea class="form-control" name="descr" rows="3"/><?php if(isset($ex)){ echo htmlspecialchars_decode($ex->descr, ENT_HTML5); } ?></textarea>
 		</div>
 	</div>
 	<div class="form-group form-inline">
@@ -73,7 +75,7 @@
 						}
 						else{
 					?>
-							<div class="col-sm-1 imageplaceholder"><i class="glyphicon glyphicon-picture"></i></div>
+							<div class="imageplaceholder">Upload et nyt billede eller vælg et eksisterende fra billedarkivet</div>
 					<?php 
 						}
 					?>

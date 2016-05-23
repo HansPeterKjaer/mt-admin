@@ -1,6 +1,4 @@
-		
 <?php 
-echo $viewModel->controls;
 	foreach($viewModel->items as $img){ 
 ?>
 

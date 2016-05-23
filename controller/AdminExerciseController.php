@@ -92,13 +92,13 @@ class AdminExerciseController extends SecureController{
 		$mapper = $this->modelFactory->buildMapper('ExerciseModelMapper');
 		$result = $mapper->fetchByName($model, $name);
 		$html = '';
-		$msg = 'An error occured!';
+		$msg = 'Øvelsen kunne ikke findes i systemet!';
 
 		if($result == true){
 			ob_start();
 			$this->view->output('exercise/_exercise', $model, false);			 
 			$html = ob_get_clean();	
-			$msg = 'Successfully retrieved exercise!';
+			$msg = "Øvelse: {$name} hentet!";
 		}
 			
 		$this->view->outputJSON(['status' => $result, 'markup' => $html, 'msg' => $msg ]);

@@ -16,7 +16,9 @@
 	<div class="form-group">
 		<label for="inputDescr" class="col-sm-4 col-md-2 control-label">Beskrivelse</label>
 		<div class="col-sm-8 col-md-6">	
-			<textarea class="form-control" id="input-descr" name="descr" rows="3"/><?php echo $pr->descr ?></textarea>
+			<?php ViewHelper::renderPartial("shared/scribetoolbar", $viewModel);?>
+			<div class="form-control wysiwyg" id="input-descr" ><?php echo htmlspecialchars_decode($pr->descr, ENT_HTML5); ?></div>
+			<textarea name="descr"><?php echo htmlspecialchars_decode($pr->descr, ENT_HTML5); ?></textarea>
 		</div>
 	</div>
 	<div class="form-group">

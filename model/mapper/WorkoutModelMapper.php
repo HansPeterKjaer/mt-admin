@@ -295,9 +295,15 @@ class WorkoutModelMapper extends BaseModelMapper{
     }*/
     public function delete($id){
     	$dbh = $this->dbhandle;
+    	
+    	$stmt = $dbh->prepare("DELETE FROM workout_exercise WHERE wo_id = :id");
+    	$stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
+		$stmt->execute();
+
     	$stmt = $dbh->prepare("DELETE FROM workout WHERE wo_id = :id");
     	$stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
 		$count = $stmt->execute();
+		
 		return $count;
     }
 }
