@@ -11,6 +11,7 @@
 //genral:
 img.img-sm{
 	width: 50px;
+	margin: 0px 10px 0px 0px;
 }
 
 h1, h2, h3, h4, label{
@@ -24,7 +25,7 @@ h1, h2, h3, h4, label{
 	margin-right: 15px;
 }
 
-.item{
+/*.item{
 	padding: 10px 10px;
     background: @grey-light;
     border: 1px solid @grey;
@@ -37,13 +38,15 @@ h1, h2, h3, h4, label{
     	font-size: 14px;
     	text-transform: uppercase;
     }
-}
+}*/
+
+
 
 // frontpage:
 .frontpage-workout-table,
 .frontpage-exercise-table,
 .frontpage-protocol-table{
-	td:last-child{
+	&.table td:last-child{
 		width:98px;
 	}
 	.ajax-delete{
@@ -68,6 +71,23 @@ h1, h2, h3, h4, label{
 	margin-bottom: 10px;
 }
 
+.table > thead > tr {
+    background: #f1f1f1;
+    > th {
+    	border-bottom: 1px solid #dddddd;
+    	//border: none;
+    }
+}
+.table{
+    border: 1px solid #dddddd;
+    background: #fff;
+    margin: 15px 0;
+
+    td:last-child{
+		width:160px;
+	}
+}
+
 /* Utility classes */
 .inline{
 	display: inline;
@@ -84,10 +104,15 @@ h1, h2, h3, h4, label{
 }
 
 .btn-xxl{
-	  padding: 20px 32px;
-	  font-size: 36px;
-	  line-height: 1.3333333;
-	  border-radius: 6px;
-
-	  margin-bottom: 20px;
-	}
+	padding: 20px 32px;
+	font-size: 36px;
+	line-height: 1.3333333;
+	border-radius: 6px;
+	margin-bottom: 20px;
+}
+.btn-margin-top{
+	margin-top: 15px;
+}
+.clear-left{
+	clear: left;
+}

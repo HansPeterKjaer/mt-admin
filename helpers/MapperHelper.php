@@ -26,6 +26,27 @@ class MapperHelper{
 		$string = "";
 		switch ($id) {
 			case 1:
+				$string = "(5/1)";
+				break;
+			case 2:
+				$string = "(4/2)";
+				break;
+			case 3:
+				$string = "(3/3)";
+				break;
+			case 4:
+				$string = "(2/4)";
+				break;
+			case 5:
+				$string = "(1/5)";
+				break;
+		}
+		return $string; 
+	}
+	public static function legacyDiffToString($id){
+		$string = "";
+		switch ($id) {
+			case 1:
 				$string = "Cardio";
 				break;
 			case 2:

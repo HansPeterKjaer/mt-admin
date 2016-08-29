@@ -2,19 +2,23 @@
 
 class AdminUserController extends SecureController {
 	protected function indexAction($status = false){
-		$viewmodel = $this->modelFactory->buildObject('UsersViewModel');
+		$viewModel = $this->modelFactory->buildObject('UsersViewModel');
 		$mapper = $this->modelFactory->buildMapper('UsersViewModelMapper');
-		$mapper->fetch($viewmodel);
+		$mapper->fetch($viewModel);
 
-		$this->view->output("user/index", $viewmodel);
+		$viewModel->currentMenuItem = 'users';
+
+		$this->view->output("user/index", $viewModel);
 	}
 	
 	protected function createUserAction(){
-		$viewmodel = $this->modelFactory->buildObject('UsersViewModel');
+		$viewModel = $this->modelFactory->buildObject('UsersViewModel');
 		$mapper = $this->modelFactory->buildMapper('UsersViewModelMapper');
-		$mapper->init($viewmodel);
+		$mapper->init($viewModel);
 
-		$this->view->output("user/createUser", $viewmodel);
+		$viewModel->currentMenuItem = 'users';
+
+		$this->view->output("user/createUser", $viewModel);
 	}
 
 	protected function addUserAction($brugernavn, $email, $password, $password2, $role){
@@ -42,10 +46,10 @@ class AdminUserController extends SecureController {
 
 	protected function deleteUserAction($brugernavn, $email){
 		if( $this->auth->deleteUser($brugernavn, $email)){
-			header("Location: {URLHelper::getBasePath();}/adminUser/index?status=delete");
+			header("Location: ". URLHelper::getBasePath() . "/adminUser/index?status=delete");
 		}
 		// Note should be json???
-		header("Location: {URLHelper::getBasePath();}/adminUser/index?status=err");
+		header("Location: ". URLHelper::getBasePath() . "/adminUser/index?status=err");
 	}
 	protected function updateUserAction($brugernavn, $email, $password){
 

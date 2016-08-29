@@ -1,12 +1,11 @@
 <?php foreach($viewModel->exercises as $ex){ ?>
 		<tr>
 			<td><a href='<?php URLHelper::renderUrl("AdminExercise/display/$ex->id"); ?>'><?php echo $ex->name ?></a></td>
-			<td><?php echo $ex->descr ?></td>
-			<td><?php echo $ex->diff ?></td>
-			<td><?php echo $ex->focus ?></td>
+			<td><?php echo MapperHelper::diffToString($ex->diff) ?></td>
+			<td><?php echo MapperHelper::focusToString($ex->focus) ?></td>
 			<td>
 				<?php foreach($ex->images->items as $item){ ?>
-					<img class="img-sm" src="<?php URLHelper::renderURL("uploads/$item->imageName") ?>" />
+					<img class="img-sm" src="<?php URLHelper::renderURL("assets/uploads/s/$item->imageName") ?>" />
 				<?php }?>
 			</td>
 			<td>

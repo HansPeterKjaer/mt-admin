@@ -6,7 +6,8 @@ class AdminHomeController extends SecureController {
 		$mapper = $this->modelFactory->buildMapper('AdminFrontpageViewModelMapper');
 		$mapper->fetch($viewmodel);
 
-		#$viewmodel->load();
+		$viewmodel->currentMenuItem = 'home';
+
 		$this->view->output("indexView",$viewmodel);
 	}	
 }

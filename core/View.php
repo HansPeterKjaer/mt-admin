@@ -26,6 +26,7 @@ class View{
 	}
 	public function outputJSON($model){
 		header('Content-Type: application/json');
+		header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
 		echo json_encode($model);
 	}
 	public function outputJSONString($json){
@@ -35,7 +36,7 @@ class View{
  			//$json = '{"status": false, "msg": "JSON DATA ERROR"}';
  			throw new Exception("Error: Invalid JSON Format", 1);
  		}
-
+ 		header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
 		header('Content-Type: application/json');
 		echo $json;	
 	}

@@ -5,13 +5,13 @@
 <form id="workout-form" class="form-horizontal ajax-form" method="POST" action="<?php ($wo->id != null) ? URLHelper::renderUrl('/AdminWorkout/update') : URLHelper::renderUrl('/AdminWorkout/insert'); ?>" >
 	<input name="id" type="hidden" value="<?php echo $wo->id; ?>" />
 	<div class="form-group">
-		<label for="inputName" class="col-sm-4 col-md-2 control-label">Titel</label>			
+		<label for="inputName" class="col-sm-4 col-md-2 control-label">Titel (Intern)</label>			
 		<div class="col-sm-8 col-md-6">
 			<input class="form-control" id="inputName" name="name" type="text" value="<?php echo $wo->name; ?>" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputDiff" class="col-sm-4 col-md-2 control-label" >Sværhedsgrad</label>	
+		<label for="inputDiff" class="col-sm-4 col-md-2 control-label" >Cardio/Styrke Forhold</label>	
 		<div class="col-sm-4">
 			<select class="form-control" id="inputDiff" name="diff" >
 			  <option value="1" <?php if($wo->diff==1){echo "selected ";} ?>><?php echo MapperHelper::diffToString(1); ?></option>
@@ -34,7 +34,7 @@
 			</select>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group hidden">
 		<label for="inputDescr" class="col-sm-4 col-md-2 control-label">Beskrivelse</label>
 		<div class="col-sm-8 col-md-6">
 			<?php ViewHelper::renderPartial("shared/scribetoolbar", $viewModel);?>	
@@ -85,11 +85,10 @@
 					  	} 
 					  	else {
 					?>
-						<div class="imageplaceholder">Importer øvelser ovenfor. Indtast øvelsens navn og klik 'Importer øvelse'.</div>
+						<div class="itemplaceholder">Importer øvelser ovenfor. Indtast øvelsens navn og klik 'Importer øvelse'.</div>
 					<?php 
 						}
 					?>
-					<div>
 				</div>
 			</div>
 		</div>

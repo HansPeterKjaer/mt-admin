@@ -2,7 +2,7 @@
   <div class="col-sm-12">
   	<div class="btn-toolbar pull-right">
 	    <div class="btn-group">
-	    <a href="<?php URLHelper::renderUrl('AdminProtocol/Create') ?>" class="btn btn-success btn-lg btn-default">Opret ny program</a>
+	    <a href="<?php URLHelper::renderUrl('AdminProtocol/Create') ?>" class="btn btn-success btn-margin-top btn-lg btn-default">Opret ny program</a>
 	    </div>
 	</div>
 	<h1>Programmer</h1>
@@ -23,11 +23,10 @@
   	</div>
 </div>
 
-<table class="table table-striped">
+<table class="table ">
 	<thead>
 		<tr>
 			<th>Navn</th>
-			<th>Beskrivelse</th>
 			<th></th>
 		</tr>
 	</thead>

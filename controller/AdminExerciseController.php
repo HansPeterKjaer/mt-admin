@@ -11,6 +11,9 @@ class AdminExerciseController extends SecureController{
     	$exerciseModelMapper->search($exerciseListModel, 10, 1);
 
     	$viewModel->exercises = $exerciseListModel;
+
+    	$viewModel->currentMenuItem = 'exercises';
+
 		$this->view->output('exercise/index', $viewModel);
 	}
 
@@ -31,6 +34,9 @@ class AdminExerciseController extends SecureController{
 		$viewModel = $this->modelFactory->buildObject('ExerciseListViewModel');
 		$mapper = $this->modelFactory->buildMapper('ExerciseViewModelMapper');
 		$mapper->fetchById($viewModel, $ex_id);
+
+		$viewModel->currentMenuItem = 'exercises';
+
 		$this->view->output('exercise/updateExercise', $viewModel);
 	}
 
@@ -38,6 +44,9 @@ class AdminExerciseController extends SecureController{
 		$viewModel = $this->modelFactory->buildObject('BaseViewModel');
 		$mapper = $this->modelFactory->buildMapper('BaseViewModelMapper');
 		$mapper->fetch($viewModel);
+
+		$viewModel->currentMenuItem = 'exercises';
+
 		$this->view->output('exercise/createExercise', $viewModel);
 	}
 

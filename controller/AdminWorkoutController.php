@@ -13,6 +13,8 @@ class AdminWorkoutController extends SecureController{
 
     	$viewModel->workouts = $workoutListModel;
 
+    	$viewModel->currentMenuItem = 'workouts';
+
 		$this->view->output('workout/index',$viewModel);
 	}
 
@@ -40,7 +42,7 @@ class AdminWorkoutController extends SecureController{
         $protocolModelMapper->fetchAll($viewModel->protocols);
         $workoutModelMapper->fetchById($viewModel->workout, $wo_id);
 
-        //$viewModel->workout = $workoutModel;
+        $viewModel->currentMenuItem = 'workouts';
 
 		$this->view->output('workout/updateWorkout',$viewModel);
 	}
@@ -49,6 +51,8 @@ class AdminWorkoutController extends SecureController{
 		$viewModel = $this->modelFactory->buildObject('WorkoutViewModel');
 		$mapper = $this->modelFactory->buildMapper('WorkoutViewModelMapper');
 		$mapper->fetchEmpty($viewModel);
+
+		$viewModel->currentMenuItem = 'workouts';
 
 		$this->view->output('workout/createWorkout',$viewModel);
 	}

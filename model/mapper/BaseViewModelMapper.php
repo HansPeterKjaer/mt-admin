@@ -7,47 +7,54 @@ class BaseViewModelMapper extends BaseModelMapper{
 	}	
 	public function fetch(BaseViewModel &$model){
 		
-		if(isset($_COOKIE['authID']) && $this->auth->checkSession($_COOKIE['authID'])) {
-			$model->loggedin = true;
+		//if(isset($_COOKIE['authID']) && $this->auth->checkSession($_COOKIE['authID'])) {
+		//	$model->loggedin = true;
 
-			$model->menuItems = [
-						0 => [
-						  'linkText' => 'Forside',
-						  'link' => '/AdminHome/',
-						  'submenuItems' => [
-						  	[
-						  		'linkText' => 'Øvelser', 
-						  		'link' => '/AdminExercise/'
-						  	],
-						  	[
-						  		'linkText' => 'Workouts', 
-						  		'link' => '/AdminWorkout/'
-						  	],
-						  	[
-						  		'linkText' => 'Programmer', 
-						  		'link' => '/AdminProtocol/displayAll'
-						  	]
-						  ]	
-						],
-						1 => [
-						  'linkText' => 'Mediearkiv',
-						  'link' => '/Media/'
-						],
-						2 => [
-						  'submenuItems' => [
-						  	[
-						  		'linkText' => 'Brugere', 
-						  		'link' => '/AdminUser/'
-						  	],
-						  	[
-						  		'linkText' => 'Værktøjer', 
-						  		'link' => '/setting'
-						  	]
-						  ]
-						]
-			];
-			$model->currentMenuItem = "";
-		}
+		$model->menuItems = [
+			0 => [
+				'linkId' => 'home',
+				'linkText' => 'Oversigt',
+				'link' => URLHelper::getURL('/AdminHome/'),
+				'submenuItems' => [
+				  	[
+				  		'linkId' => 'exercises',
+						'linkText' => 'Øvelser', 
+				  		'link' => URLHelper::getURL('/AdminExercise/')
+				  	],
+				  	[
+				  		'linkId' => 'workouts',
+						'linkText' => 'Workouts', 
+				  		'link' => URLHelper::getURL('/AdminWorkout/')
+				  	],
+				  	[
+				  		'linkId' => 'protocols',
+						'linkText' => 'Programmer', 
+				  		'link' => URLHelper::getURL('/AdminProtocol/displayAll')
+				  	]
+				  ]	
+			],
+			1 => [
+				'linkId' => 'media',
+				'linkText' => 'Mediearkiv',
+				'link' => URLHelper::getURL('/Media/')
+			],
+			2 => [
+			  	'submenuItems' => [
+				  	[
+				  		'linkId' => 'users',
+						'linkText' => 'Brugere', 
+				  		'link' => site_url() . '/wp-admin/users.php'
+				  	],
+				  	[
+				  		'linkId' => 'settings',
+						'linkText' => 'Værktøjer', 
+				  		'link' => URLHelper::getURL('/setting')
+				  	]
+			  	]
+			]
+		];
+		$model->currentMenuItem = "";
+		//}
 	}
 }
 

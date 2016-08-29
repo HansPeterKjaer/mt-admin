@@ -2,7 +2,7 @@
   <div class="col-sm-12">
   	<div class="btn-toolbar pull-right">
 	    <div class="btn-group">
-	    	<span class="btn btn-success btn-lg btn-file">
+	    	<span class="btn btn-success btn-margin-top btn-lg btn-file">
     			Upload billede<input class="btn-upload-image" type="file" data-target-url="<?php URLHelper::renderUrl('/Media/insertImageJSON/'); ?>"></input>
 			</span>
 	    </div>

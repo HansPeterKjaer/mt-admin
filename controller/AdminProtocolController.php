@@ -12,6 +12,8 @@ class AdminProtocolController extends SecureController{
 
     	$viewModel->protocols = $protocolListModel;
 
+    	$viewModel->currentMenuItem = 'protocols';
+
 		$this->view->output("protocol/index", $viewModel);
 	}
 	public function protocolListPanelAction($page, $term, $filter, $sort){
@@ -31,7 +33,7 @@ class AdminProtocolController extends SecureController{
 		$mapper = $this->modelFactory->buildMapper('ProtocolViewModelMapper');
 		$mapper->fetchById($viewModel, $pr_id);
 
-		//$viewmodel->currentMenuItem = 'protokoller';
+		$viewModel->currentMenuItem = 'protocols';
 
 		$this->view->output("protocol/single", $viewModel);
 	}
@@ -40,7 +42,9 @@ class AdminProtocolController extends SecureController{
 		$viewModel = $this->modelFactory->buildObject('BaseViewModel');
 		$viewModelMapper = $this->modelFactory->buildMapper('BaseViewModelMapper');
 		$viewModelMapper->init($viewModel);
-		$viewModel->currentMenuItem = 'programmer';
+
+		$viewModel->currentMenuItem = 'protocols';
+
 		$this->view->output("protocol/create", $viewModel);
 	}
 

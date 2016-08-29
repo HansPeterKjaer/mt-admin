@@ -23,27 +23,28 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          <a class="navbar-brand" href="<?php URLHelper::renderURL('adminHome'); ?>">Mytrainer Admin</a>
+          <a class="navbar-brand" href="<?php URLHelper::renderURL('adminHome'); ?>"><img src="<?php URLHelper::renderURL('assets/images/mtlogo_b_inv.png') ?>" alt="MyTrainer Logo" /></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="<?php URLHelper::renderURL('/adminHome/'); ?>" class="navbar-nav pull-right">Dashboard</a></li>
+              <li><a href="<?php echo site_url() ?>" class="navbar-nav pull-right">Blog</a></li>
               <li><a href="<?php URLHelper::renderURL('/app/generateworkout'); ?>" class="navbar-nav pull-right">Generator</a></li>
-              <li><a href="<?php URLHelper::renderURL('/login/logout'); ?>" class="navbar-nav pull-right">Log Out</a></li>
+              <li><a href="/blog/wp-admin" class="navbar-nav pull-right">Blog Admin</a></li>
+              <li><a href="<?php echo wp_logout_url(); ?>" class="navbar-nav pull-right">Log Out</a></li>
             </ul>
         </div><!--/.nav-collapse -->
 
       </div>
     </nav>
-
-    <div class="container-fluid">
+    <div class="sidebar">
+      <?php if($viewModel->menuItems) : ?>
+        <?php ViewHelper::renderPartial("shared/menu", $viewModel);?>
+      <?php endif; ?>
+    </div>
+    
+    <div class="main-content container-fluid">
       <div class="row">
-  		  <div class="col-sm-3 col-md-2 sidebar">
-          <?php if($viewModel->menuItems) : ?>
-            <?php ViewHelper::renderPartial("shared/menu", $viewModel);?>
-          <?php endif; ?>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-12">
           <?php require($viewFile) ?>
         </div>
       </div>

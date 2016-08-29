@@ -2,7 +2,7 @@
   <div class="col-sm-12">
   	<div class="btn-toolbar pull-right">
 	    <div class="btn-group">
-	    <a href="<?php URLHelper::renderUrl('AdminWorkout/Create') ?>" class="btn btn-success btn-lg btn-default">Opret ny Workout</a>
+	    <a href="<?php URLHelper::renderUrl('AdminWorkout/Create') ?>" class="btn btn-margin-top btn-success btn-lg btn-default">Opret ny Workout</a>
 	    </div>
 	</div>
 	<h1>Workouts</h1>
@@ -23,15 +23,15 @@
   	</div>
 </div>
 
-<table class="table table-striped">
+<table class="table ">
 	
 	<thead>
 		<tr>
-			<th>Navn</th>
-			<th>Øvelser</th>
-			<th>Sværhed</th>
-			<th>Fokus</th>		
+			<th>Navn (Internt)</th>
 			<th>Program</th>
+			<th>Øvelser</th>
+			<th>Cardio/Styrke</th>
+			<th>Fokus</th>		
 			<th></th>
 		</tr>
 	</thead>

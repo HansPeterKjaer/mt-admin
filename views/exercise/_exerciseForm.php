@@ -11,7 +11,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputDiff" class="col-sm-4 col-md-2 control-label" >Sværhedsgrad</label>	
+		<label for="inputDiff" class="col-sm-4 col-md-2 control-label" >Cardio/Styrke Forhold</label>	
 		<div class="col-sm-4">
 			<select class="form-control" id="inputDiff" name="diff" >
 			  <option value="1" <?php if(isset($ex) && $ex->diff==1){echo "selected ";} ?> >1 (let)</option>
@@ -75,7 +75,7 @@
 						}
 						else{
 					?>
-							<div class="imageplaceholder">Upload et nyt billede eller vælg et eksisterende fra billedarkivet</div>
+							<div class="itemplaceholder">Upload et nyt billede eller vælg et eksisterende fra billedarkivet</div>
 					<?php 
 						}
 					?>

@@ -3,24 +3,25 @@
 ?>
 <div class="row">
 	<div class="col-xs-12" >
-			<h1 class="margin-sm">Din Workout: <?php echo $wo->protocol->name; ?> <span class="hidden"><?php echo $wo->name; ?></span></h1>
-		<div class="pull-left">
-			<p>Fokus: <?php echo MapperHelper::diffToString($wo->diff); ?></p>
-			<p>Type: <?php echo MapperHelper::focusToString($wo->focus); ?></p>
+		<h1 class="margin-sm pull-left">Din Workout <span class="hidden"><?php echo $wo->name; ?></span></h1>
+		<button class="btn workoutbtn btn-xxl btn-success pull-right">Start Workout</button>
+		<div class="pull-left clear-left">
+			<p>Fokus: <?php echo MapperHelper::focusToString($wo->focus); ?></p>
+			<p>Cardio/Styrke: <?php echo MapperHelper::diffToString($wo->diff); ?></p>
 			<p class="hidden">Beskrivelse: <?php echo $wo->descr; ?></p>
 		</div>
-		<button class="btn workoutbtn btn-xxl btn-success pull-right">Start Workout</button>
+		
 	</div>
 
 	<div class="col-xs-12" >
-		<div class="panel">
-			<h2 class="margin-sm">Program</h2>
-			<p><?php echo $wo->protocol->descr; ?></p>		
+		<div class="mt-panel">
+			<h2 class="margin-sm">Program: <?php echo $wo->protocol->name; ?></h2>
+			<div><?php echo htmlspecialchars_decode($wo->protocol->descr, ENT_HTML5); ?></div>		
 		</div>
 	</div>
 
 	<div class="col-xs-12" >
-		<div class="workout-exercises panel">
+		<div class="workout-exercises mt-panel">
 			<h2 class="margin-sm">Øvelser</h2>
 			
 			<div class="row small-gutters">
@@ -29,13 +30,13 @@
 	foreach ($wo->exercises as $ex ) {
 ?>
 	<div class="col-sm-2">
-		<div class='exercise small boxed thumbnail' data-id='<?php echo $ex->id; ?>'>
+		<div class='exercise thumbnail' data-id='<?php echo $ex->id; ?>'>
 			<div class="imageViewer">
 				<?php 
 					$current = true;
 					foreach($ex->images->items as $item){ 
 				?>
-					<img class="<?php if ($current == true){ echo 'current'; } ?>" src="<?php URLHelper::renderURL("uploads/$item->imageName") ?>" />
+					<img class="<?php if ($current == true){ echo 'current'; } ?>" src="<?php URLHelper::renderURL("assets/uploads/$item->imageName") ?>" />
 				<?php 
 					$current = false;
 				}?>
@@ -43,12 +44,12 @@
 			<button class="btn-play btn btn-xs btn-primary"><i class="_glyphicon _glyphicon-arrow-left"></i>></button>
 			<button class="btn-next btn btn-xs btn-primary"><i class="_glyphicon _glyphicon-arrow-left"></i>-></button>
 			<button class="btn-prev btn btn-xs btn-primary"><i class="_glyphicon _glyphicon-arrow-left"></i><-</button>  
-			<div class=''>
+			<div>
 				<h1 class="margin-sm"><?php echo $ex->name; ?></h1>
 				<p><?php echo MapperHelper::focusToString($ex->focus); ?></p>
 				<p><?php echo MapperHelper::diffToString($ex->diff); ?></p>
-				<p><?php echo $ex->descr; ?></p>
-			</div>
+				<div class="description"><?php echo htmlspecialchars_decode($ex->descr, ENT_HTML5); ?></div>
+			</div >
 		</div>
 	</div>
 <?php 

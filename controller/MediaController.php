@@ -9,6 +9,8 @@ class MediaController extends SecureController{
    		$mapper = $this->modelFactory->buildMapper('MediaModelMapper');
 		$mapper->search($viewModel->MediaItems, '');
 
+		$viewModel->currentMenuItem = 'media';
+
 		$this->view->output('/media/index', $viewModel);
 	}
 	
@@ -112,6 +114,9 @@ class MediaController extends SecureController{
 			$controller->action("PageDoesNotExistAction", []);	
    			exit(); // todo: should not be necessary
    		}
+
+   		$viewModel->currentMenuItem = 'media';
+
    		$this->view->output('/media/image', $viewModel);	
 	}
 

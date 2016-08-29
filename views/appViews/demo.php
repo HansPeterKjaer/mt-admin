@@ -11,7 +11,14 @@
 	<title>MT Workout Test</title>
 	<link href="<?php URLHelper::renderUrl('assets/css/base.css')?>" rel="stylesheet">
 <style>
-	
+	.navbar-brand img{
+	margin-top: -5px;
+    margin-bottom: -5px;
+    height: 30px;
+}
+.workout-exercises .exercise .description{
+		display:none;
+	}
 	.imageViewer{
 	width:100%;
 	position: relative;
@@ -82,9 +89,12 @@
 				<h1 class="margin-sm">Generer workout</h1>
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label class="col-xs-4">Styrke-Cardio</label>
+						<label class="col-xs-4">Cardio/Styrke</label>
 						<div class="col-xs-4">
-							<input type="range" name="diff" min="0" max="6" step="0.1" <?php if ($formData) { echo "value='{$formData['diff']}'"; }; ?> />
+							<input class="diff-range" type="range" name="diff" min="1" max="5" step="1" <?php if ($formData) { echo "value='{$formData['diff']}'"; }; ?> />
+						</div>
+						<div class="col-xs-4">
+							<span id="diff-value" class="diff"><?php if ($formData) { echo "(" . (6 - intval($formData['diff'])) . "/{$formData['diff']})"; }; ?></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -130,8 +140,8 @@
 			<div class="mt-panel exercise-panel">
 				<div class="row">
 					<div class="col-xs-12" >
-						<h1 class="margin-sm">Næste øvelse:</h1>
-						<p>Generer en workout for at komme igang!</p>
+						<h1 class="margin-sm">Øvelse</h1>
+						<p class="placeholder">Generer en workout ud fra dine parametre og klik start for at komme igang!</p>
 					</div>
 				</div>
 			</div>		
@@ -150,8 +160,14 @@
 
 	var exerciseThumbs = doc.querySelectorAll('.workout-exercises .exercise');
 	var startBtn =  doc.querySelector('.workoutbtn');
+	var diffRange = doc.querySelector('.diff-range');
 
-	startBtn.addEventListener('click', function(evt){
+	diffRange.addEventListener('input', function(evt){
+		var diffValueElm = doc.querySelector('#diff-value');
+		diffValueElm.textContent = '(' + (6-this.value) + '/' + this.value + ')';
+	});
+
+	startBtn && startBtn.addEventListener('click', function(evt){
 		var nextExercise = null
 		if (doc.querySelector('.workout-exercises .exercise.selected')) {
 			nextExercise = doc.querySelector('.workout-exercises .exercise.selected').parentNode.nextElementSibling.childNodes[1];
@@ -177,6 +193,8 @@
 		var currentExercise = exercisePanel.querySelector('.exercise');
 		currentExercise && exercisePanel.removeChild(currentExercise);
 		exercisePanel.appendChild(exercise);
+		var placeholder = exercisePanel.querySelector('.placeholder');
+		placeholder && placeholder.classList.add('hidden');
 		player(exercise);
 	}
 	function player(exercise){

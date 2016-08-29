@@ -99,13 +99,7 @@ var exImgUploadCB = function(status, data){
 	if(data.status == true){
 		var imageContainer = doc.querySelector('#exercise-images');
 		imageContainer.insertAdjacentHTML('beforeend', data.markup);
-		imageContainer.querySelector('.imageplaceholder') && imageContainer.querySelector('.imageplaceholder').remove();
-		
-		/*var select = doc.querySelector('select.images');
-		var opt = doc.createElement('option');
-		opt.value = data.id ? data.id : data.data.id;
-		opt.setAttribute('selected', 'selected');
-		select.appendChild(opt);*/
+		imageContainer.querySelector('.itemplaceholder') && imageContainer.querySelector('.itemeplaceholder').remove();
 	}
 	else{
 		alertMsg.init(data.msg, doc.querySelector('.btn.btn-info'));	 // improve selector!	
@@ -154,11 +148,10 @@ for (var i = 0; i < exImportSubmits.length; ++i){
 
 	function exImportCB(status, data){
 		data = JSON.parse(data);
-		console.log(data);
 		if(data.status == true){
 			var itemContainer = doc.querySelector('#workout-exercises');
 			itemContainer.insertAdjacentHTML('beforeend', data.markup);
-			itemContainer.querySelector('.placeholder') && itemContainer.querySelector('.placeholder').remove();
+			itemContainer.querySelector('.itemplaceholder') && itemContainer.querySelector('.itemplaceholder').remove();
 		}
 		else{
 			alertMsg.init(data.msg, doc.querySelector('.import-status')); 
