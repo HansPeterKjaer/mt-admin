@@ -14,6 +14,8 @@ class BaseApp{
 		// Establish db connection
 		$options = array(PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 		
+		Logger::initLogger(@constant('DEVELOPMENT_ENVIRONMENT'));
+		
 		try {
     		$this->dbhandle = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname , $this->dbuser, $this->dbpass, $options);
     	}
@@ -22,8 +24,6 @@ class BaseApp{
     		Logger::log('an error occured: ' . $e->getMessage()); 
     		exit();
     	}
-
-    	Logger::initLogger(@constant('DEVELOPMENT_ENVIRONMENT'));
     	
     	$this->createController();
 	}

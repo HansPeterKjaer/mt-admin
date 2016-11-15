@@ -23,24 +23,27 @@
   	</div>
 </div>
 
-<table class="table ">
+<div class="row">
+  	<div class="col-xs-12">
+		<table class="table ">
+			<thead>
+				<tr>
+					<th>Navn (Internt)</th>
+					<th>Program</th>
+					<th>Øvelser</th>
+					<th>Cardio/Styrke</th>
+					<th>Fokus</th>		
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('/AdminWorkout/workoutListJson'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
+				<?php ViewHelper::renderPartial("workout/_workoutList", $viewModel->workouts); ?>
+			</tbody>
+		</table>
+	</div>
 	
-	<thead>
-		<tr>
-			<th>Navn (Internt)</th>
-			<th>Program</th>
-			<th>Øvelser</th>
-			<th>Cardio/Styrke</th>
-			<th>Fokus</th>		
-			<th></th>
-		</tr>
-	</thead>
-
-	<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('/AdminWorkout/workoutListJson'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
-		<?php ViewHelper::renderPartial("workout/_workoutList", $viewModel->workouts); ?>
-	</tbody>
-</table>
-
-<div class="col-xs-12">
-	<button id="ajax-panel-load-more" class="btn btn-default <?php if($viewModel->workouts->totalPages == 1) echo 'hidden'; ?>" type="button">Vis flere</button>
+	<div class="col-xs-12">
+		<button id="ajax-panel-load-more" class="btn btn-default <?php if($viewModel->workouts->totalPages == 1) echo 'hidden'; ?>" type="button">Vis flere</button>
+	</div>
 </div>

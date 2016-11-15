@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-xs-12">
   	<div class="btn-toolbar pull-right">
 	    <div class="btn-group">
 	    <a href="<?php URLHelper::renderUrl('AdminProtocol/Create') ?>" class="btn btn-success btn-margin-top btn-lg btn-default">Opret ny program</a>
@@ -23,14 +23,21 @@
   	</div>
 </div>
 
-<table class="table ">
-	<thead>
-		<tr>
-			<th>Navn</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('/AdminProtocol/protocolListPanel'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
-		<?php ViewHelper::renderPartial("protocol/_protocolList", $viewModel->protocols); ?>
-	</tbody>
-</table>
+<div class="row">
+  	<div class="col-xs-12">
+		<table class="table ">
+			<thead>
+				<tr>
+					<th>Navn</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('/AdminProtocol/protocolListPanel'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
+				<?php ViewHelper::renderPartial("protocol/_protocolList", $viewModel->protocols); ?>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-xs-12">
+		<button id="ajax-panel-load-more" class="btn btn-default  <?php if($viewModel->MediaItems->totalPages == 1) echo 'hidden'; ?>" type="button">Vis flere</button>
+	</div>
+</div>
