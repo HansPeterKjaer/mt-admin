@@ -20,18 +20,6 @@ var scribePluginHeadingCommand = require('scribe-plugin-heading-command');
 //var scribePluginContentCleaner = require('scribe-plugin-content-cleaner');
 
 
-//wysiwyg test:
-
-/*var wysiwygTextArea = doc.querySelector('.wysiwyg');
-if (wysiwygTextArea){
-	var s = document.createElement( 'script' );
-	s.setAttribute( 'src', '//cdn.tinymce.com/4/tinymce.min.js' );
-	document.body.appendChild( s );
-	s.onload = function(){
-		tinymce.init({selector: '.wysiwyg', toolbar: 'undo redo | bold italic | bullist numlist outdent indent |', menubar: false});
-	};
-}*/
-
 var wysiwygTextArea = doc.querySelector('.wysiwyg');
 if (wysiwygTextArea){
 	var toolbar = doc.querySelector('.toolbar');
@@ -99,10 +87,10 @@ var exImgUploadCB = function(status, data){
 	if(data.status == true){
 		var imageContainer = doc.querySelector('#exercise-images');
 		imageContainer.insertAdjacentHTML('beforeend', data.markup);
-		imageContainer.querySelector('.itemplaceholder') && imageContainer.querySelector('.itemeplaceholder').remove();
+		imageContainer.querySelector('.itemplaceholder') && imageContainer.querySelector('.itemplaceholder').remove();
 	}
 	else{
-		alertMsg.init(data.msg, doc.querySelector('.btn.btn-info'));	 // improve selector!	
+		alertMsg.init(data.msg, doc.querySelector('.upload-status'));		
 	}
 }
 
@@ -121,7 +109,7 @@ for (var i = 0; i < imgImportSubmits.length; ++i){
 	if (!input) continue;
 
 	submitBtn.addEventListener('click', function(){
-		var url = MT.BasePath + '/media/getImageJSON?imageName=' + input.value + '&controls=true';
+		var url = submitBtn.getAttribute('data-url') + input.value + '&controls=true';
 		ajax.get(url, exImgUploadCB);
 	});
 }
@@ -166,7 +154,7 @@ doc.querySelector('.item-composer') && doc.querySelector('.item-composer').addEv
 function itemComposer (evt) {
 	evt.preventDefault();
 
-	var that = this; // wtf?
+	//var that = this; // wtf?
 	var selectElm = doc.querySelector(this.getAttribute('data-select-elm')); 
 	var targetBtn = evt.target.classList.contains('btn') ? evt.target : findAncestor(evt.target, 'btn');
 	var targetWrapper = findAncestor(targetBtn, 'itemcontainer');
@@ -183,6 +171,7 @@ function itemComposer (evt) {
 }
 
 var target = document.querySelector('.item-composer');
+
 if (target) {
 	var observer = new MutationObserver(function(mutations) {
 		var items = target.querySelectorAll('[data-id]');

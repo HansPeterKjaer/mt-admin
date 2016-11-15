@@ -28,8 +28,7 @@ function upload(evt){
 	var file = evt.target.files[0]
 
 	if (!file.type.match(/image.*/)) {
-		var target = this;
-		target = document.querySelector('.upload-status');
+		var target = document.querySelector('.upload-status');
 
 		alertMsg.init('The selected file appears not to be an image!', target);
 		return

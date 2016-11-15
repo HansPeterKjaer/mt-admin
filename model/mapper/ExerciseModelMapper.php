@@ -16,6 +16,7 @@ class ExerciseModelMapper extends BaseModelMapper{
 	        $count = 0;
 
 			$stmt = $dbh->prepare("INSERT INTO exercise_image (ex_id, img_id, img_index) VALUES ($id, :img_id, :imageIndex)");
+
 	        foreach ($model->images as $value) {
 	        	$c = $count++;
 	        	$stmt->bindParam(':img_id', $value);
@@ -24,6 +25,7 @@ class ExerciseModelMapper extends BaseModelMapper{
 	        }
 	        
 	        return true;
+
 	    } catch (PDOException $e){
 	    	Logger::log($e);
 	    	return false;

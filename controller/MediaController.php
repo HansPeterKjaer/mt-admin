@@ -27,7 +27,7 @@ class MediaController extends SecureController{
 			if($resultData['status'] == true){
 				$mediaModel = $this->modelFactory->buildObject('MediaModel');
 				$model = $this->modelFactory->buildObject('MediaListModel');
-				$mediaModel->id = $resultData['data']['id'];
+				$mediaModel->id = $id;
 				$mediaModel->imageName = $resultData['data']['imageName'];
 				$model->items = [$mediaModel];
 				$model->controls = ($controls === 'true') ? true : false;
@@ -55,7 +55,6 @@ class MediaController extends SecureController{
 		$html = "";
 		$msg = "";
 		$id = null;
-
 		$mediaModel->controls = $controls;
 
 		if($result && (count($mediaModel->items) == 1)){
@@ -183,7 +182,6 @@ class MediaController extends SecureController{
 		$uploadStatus = false;
 		$msg = '';
 		$imageFileType = pathinfo($targetFile,PATHINFO_EXTENSION);
-		//$mapper = $this->modelFactory->buildMapper('MediaModelMapper');
 		
 		// upload main image:
 		if(empty($image['tmp_name'])){
@@ -199,7 +197,6 @@ class MediaController extends SecureController{
     		}
 	        else{
 	        	$msg = 'File could not be moved on server';
-	        	$mapper->removeImage($imageName);
 	        }	
 		}
 
