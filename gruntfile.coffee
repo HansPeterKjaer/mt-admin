@@ -22,16 +22,16 @@ module.exports = ()->
         files: ['assets/**/*.js']
         tasks: ['webpack:dev']
       styling:
-        files: ['assets/styles/less/**/*.less']
+        files: ['assets/less/**/*.less']
         tasks: ['less:dev']
       assets:
-        files: ['assets/images/**', 'assets/uploads/**', 'assets/fonts/**']
+        files: ['assets/images/**', 'assets/fonts/**']
         tasks: ['sync:assets']
 
     less:
       dev:
         files:
-          'publish/assets/css/base.css': 'assets/styles/less/base.less'
+          'publish/assets/css/base.css': 'assets/less/main.less'
 
     webpack:
       dev:
@@ -51,10 +51,10 @@ module.exports = ()->
       assets:
         files: [
           cwd: 'assets/',
-          src: ['fonts/**', 'images/**', 'uploads/**'],
+          src: ['fonts/**', 'images/**'],
           dest: 'publish/assets/'
         ]
-        ignoreInDest: ['uploads/**', 'css/**', 'scripts/**']
+        ignoreInDest: ['css/**', 'scripts/**']
         updateAndDelete: true
         verbose: true
       routes:

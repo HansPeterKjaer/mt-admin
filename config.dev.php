@@ -15,4 +15,5 @@ define ('APP_DBUSER', 'root');
 define ('APP_DBPASS', null);	
 
 define ('APP_BLOGROOT', '/mt/mtblog');
+define ('SITEROOT', '/mt');
 ?>

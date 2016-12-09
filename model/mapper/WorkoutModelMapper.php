@@ -1,17 +1,18 @@
 <?php
 
 class WorkoutModelMapper extends BaseModelMapper{
-	public function insert($name, $diff, $focus, $descr, $protocol, $exercises = []){
+	public function insert($name, $diff, $focus, $time, $descr, $protocol, $exercises = []){
     	$dbh = $this->dbhandle;
     	$status = false;
     	$msg = "";
 
     	$dbh->beginTransaction();
     	try {
-			$stmt = $dbh->prepare("INSERT INTO workout (wo_name, wo_diff, wo_focus, wo_desc, wo_pr_id) VALUES (:name, :diff, :focus, :descr, :protocol)");
+			$stmt = $dbh->prepare("INSERT INTO workout (wo_name, wo_diff, wo_focus, wo_time, wo_desc, wo_pr_id) VALUES (:name, :diff, :focus, :t, :descr, :protocol)");
 			$stmt->bindParam(':name', $name);
 			$stmt->bindParam(':diff', $diff);
 	        $stmt->bindParam(':focus', $focus);
+	        $stmt->bindParam(':t', $time);
 	        $stmt->bindParam(':descr', $descr);
 	        $stmt->bindParam(':protocol', $protocol);
 	        $stmt->execute();
@@ -41,18 +42,19 @@ class WorkoutModelMapper extends BaseModelMapper{
 		return ['status' => $status, 'msg' => $msg];
     }
 
-    public function update($id, $name, $diff, $focus, $descr, $protocol, $exercises = []){
+    public function update($id, $name, $diff, $focus, $time, $descr, $protocol, $exercises = []){
     	$dbh = $this->dbhandle;
     	$status = false;
     	$msg = "";
 
     	$dbh->beginTransaction();
     	try {
-    		$stmt = $dbh->prepare("UPDATE workout SET wo_name = :name, wo_diff = :diff, wo_focus = :focus, wo_desc = :descr, wo_pr_id = :protocol WHERE wo_id = :id");
+    		$stmt = $dbh->prepare("UPDATE workout SET wo_name = :name, wo_diff = :diff, wo_focus = :focus, wo_time = :t, wo_desc = :descr, wo_pr_id = :protocol WHERE wo_id = :id");
 			$stmt->bindParam(':id', $id);
 			$stmt->bindParam(':name', $name);
 			$stmt->bindParam(':diff', $diff);
 	        $stmt->bindParam(':focus', $focus);
+	        $stmt->bindParam(':t', $time);
 	        $stmt->bindParam(':descr', $descr);
 	        $stmt->bindParam(':protocol', $protocol);
 	        $result = $stmt->execute();
@@ -115,6 +117,7 @@ class WorkoutModelMapper extends BaseModelMapper{
 	    		$model->name = $row['wo_name'];
 				$model->diff = $row['wo_diff'];
 				$model->focus = $row['wo_focus'];
+				$model->time = $row['wo_time'];
 				$model->descr = $row['wo_desc'];
 				$model->protocol = new ProtocolModel();
 
@@ -171,7 +174,7 @@ class WorkoutModelMapper extends BaseModelMapper{
 		$firstLetter = (!empty($firstLetter)) ? "$firstLetter%" : $firstLetter;
 
 		$sqlCount = "SELECT COUNT(*) FROM workout {$sqlCondition}";
-		$sqlSelect = "SELECT wo_id AS id, wo_name AS name, wo_diff AS diff, wo_focus AS focus, wo_desc AS descr, wo_pr_id as prtc FROM workout {$sqlCondition} {$sortStatement} LIMIT :offset, :limit ";
+		$sqlSelect = "SELECT wo_id AS id, wo_name AS name, wo_diff AS diff, wo_focus AS focus, wo_time AS time, wo_desc AS descr, wo_pr_id as prtc FROM workout {$sqlCondition} {$sortStatement} LIMIT :offset, :limit ";
 		//echo $sqlSelect;
 
     	try {

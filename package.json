@@ -14,6 +14,7 @@
     "scribe-plugin-heading-command": "^0.1.0",
     "scribe-plugin-smart-lists": "^0.1.8",
     "scribe-plugin-toolbar": "^1.0.0",
+    "scribe-plugin-sanitizer": "^0.1.10",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }

@@ -7,7 +7,7 @@ class ErrorController extends BaseController {
 		$mapper->fetch($viewModel);
 
 		http_response_code(404);
-		$this->view->output('PageDoesNotExistView', $viewModel, 'Shared/emptyTemplate');	
+		$this->view->output('pageDoesNotExistView', $viewModel, 'Shared/emptyTemplate');	
 	}
 }
 

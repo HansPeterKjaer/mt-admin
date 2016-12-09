@@ -1,0 +1,80 @@
+@import "vendors/bootstrap/bootstrap.less";
+@import "vendors/awesomplete.less";
+@import "utils/colors.less";
+@import "utils/bootstrap-additions.less";
+@import "utils/awesomeplete-overrides.less";
+@import "base/typography";
+@import "base/fontello-icons.less";
+@import "base/tables.less";
+@import "base/forms.less";
+@import "layout/grid.less";
+@import "layout/navbar.less";
+@import "layout/sidebar.less";
+@import "components/errormsg.less";
+@import "components/ajax-panel.less";
+@import "pages/frontpage.less";
+
+
+/*.ex-img{
+	position: relative;
+	width: 200px;
+	img{
+		position: absolute;
+		top: 0;
+		left:0;
+		z-index:2;
+		width: 200px;
+	}
+}*/
+
+
+/*
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+*/
+
+img.img-sm{
+	width: 50px;
+	margin: 0px 10px 0px 0px;
+}
+
+
+.boxed{
+  padding:10px 10px;
+  background: @grey;
+  &.grey-light{
+    background: @grey-light;
+  }
+}
+
+.itemcontainer{
+    h1{
+    	margin: 0 0 10px;
+    	font-size: 14px;
+    	text-transform: uppercase;
+    }
+}
+
+.mt-panel,
+.item-composer{
+  border: solid 1px #ddd;
+  margin-bottom: 20px;
+  //border-radius: 4px;
+  padding: 15px;
+  .padding-sm{
+    padding: 5px;
+  }
+  background: #fff;
+  
+  .clearfix;
+
+  .form-group &{
+    margin-left: 15px;
+  }
+  h1, h2, h3{
+    margin: 10px 0px;
+  }
+}

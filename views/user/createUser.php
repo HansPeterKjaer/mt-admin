@@ -1,6 +1,6 @@
 <h1>Tilføj ny Bruger</h1>
 
-<form class="form-horizontal ajax-form" method="POST" action="<?php URLHelper::renderUrl('/AdminUser/addUser'); ?>">
+<form class="form-horizontal ajax-form" method="POST" action="<?php URLHelper::renderUrl('AdminUser/addUser'); ?>">
 	<div class="form-group">
 		<label for="brugernavn" class="col-sm-4 col-md-2 control-label">Brugernavn</label>
 		<div class="col-sm-4">			

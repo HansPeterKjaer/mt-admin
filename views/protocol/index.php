@@ -32,7 +32,7 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('/AdminProtocol/protocolListPanel'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
+			<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('AdminProtocol/protocolListPanel'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
 				<?php ViewHelper::renderPartial("protocol/_protocolList", $viewModel->protocols); ?>
 			</tbody>
 		</table>

@@ -37,7 +37,7 @@
 	<button class="btn btn-default" type="button" data-command-name ="redo" aria-label="Annuler fortryd" title="Annuler fortryd" disabled>
 		<span class="fontello icon-forward" aria-hidden="true">
 	</button>
-	<!--button class="btn btn-default" type="button" data-command-name ="cleanup" aria-label="Cleanup" title="Cleanup">
+	<button class="btn btn-default" type="button" data-command-name ="cleanup" aria-label="Cleanup" title="Cleanup">
 		<span class="fontello icon-flash" aria-hidden="true">
-	</button-->
+	</button>
 </div>

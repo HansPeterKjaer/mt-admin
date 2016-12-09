@@ -36,7 +36,7 @@
 					$current = true;
 					foreach($ex->images->items as $item){ 
 				?>
-					<img class="<?php if ($current == true){ echo 'current'; } ?>" src="<?php URLHelper::renderURL("assets/uploads/$item->imageName") ?>" />
+					<img class="<?php if ($current == true){ echo 'current'; } ?>" src="<?php URLHelper::renderURL("/mtassets/exercise-images/$item->imageName") ?>" />
 				<?php 
 					$current = false;
 				}?>

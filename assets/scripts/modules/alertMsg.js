@@ -7,6 +7,7 @@ exports.init = function(message, targetElm, style, position){
 	var style = (typeof style !== 'undefined') ? style : 'alert-danger';
 	var errorWrapper = document.createElement('div');
 	var button = document.createElement('button');
+	var rect;
 
 	errorWrapper.classList.add('errormsg', 'alert', 'alert-dismissible', 'margin-top', style);
 	button.classList.add('close');
@@ -29,5 +30,13 @@ exports.init = function(message, targetElm, style, position){
 	else{
 		targetElm.appendChild(errorWrapper);
 	}
-}
 
+	rect = errorWrapper.getBoundingClientRect();
+	
+	if(rect.top < 0 ){
+		errorWrapper.scrollIntoView({block: "start", behavior: "smooth"});
+	}
+	else if (rect.bottom > (window.innerHeight || document.documentElement.clientHeight)){
+		errorWrapper.scrollIntoView({block: "end", behavior: "smooth"});
+	}
+}

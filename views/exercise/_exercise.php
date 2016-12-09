@@ -1,6 +1,6 @@
 <div class='col-sm-2 imagecontainer itemcontainer'>
 	<div class='thumbnail' data-id='<?php echo $viewModel->id; ?>'>
-		<img src='<?php URLHelper::renderUrl("assets/uploads/{$viewModel->images->items[0]->imageName}"); ?>' />
+		<img src='<?php URLHelper::renderUrl("/mtassets/exercise-images/{$viewModel->images->items[0]->imageName}"); ?>' />
 		<div class='caption'>
 			<h1><?php echo $viewModel->name; ?></h1>
 			<p><?php echo MapperHelper::focusToString($viewModel->focus); ?></p>

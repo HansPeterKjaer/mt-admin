@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link href="<?php URLHelper::renderUrl('/assets/css/base.css')?>" rel="stylesheet">
+    <link href="<?php URLHelper::renderUrl('assets/css/base.css')?>" rel="stylesheet">
     
 
 	<title>MT ADMIN</title>
@@ -27,13 +27,12 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="<?php echo site_url() ?>" class="navbar-nav pull-right">Blog</a></li>
-              <li><a href="<?php URLHelper::renderURL('/app/generateworkout'); ?>" class="navbar-nav pull-right">Generator</a></li>
-              <li><a href="/blog/wp-admin" class="navbar-nav pull-right">Blog Admin</a></li>
-              <li><a href="<?php echo wp_logout_url(); ?>" class="navbar-nav pull-right">Log Out</a></li>
+              <li><a href="<?php echo site_url() ?>" class=" pull-right">Blog</a></li>
+              <li><a href="<?php URLHelper::renderUrl('app/generateworkout'); ?>" class="pull-right">Generator</a></li>
+              <li><a href="/blog/wp-admin" class="pull-right">Blog Admin</a></li>
+              <li><a href="<?php echo wp_logout_url(); ?>" class="pull-right">Log Out</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
-
+        </div>
       </div>
     </nav>
     <div class="sidebar">
@@ -51,6 +50,7 @@
     </div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php URLHelper::renderURL('assets/scripts/bundle.js'); ?>"></script>
+    <?php Logger::consoleLog(); ?>
 </body>
 </html>	
  

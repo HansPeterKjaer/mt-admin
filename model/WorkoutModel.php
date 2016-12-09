@@ -6,6 +6,7 @@ class WorkoutModel{
 	public $descr;
 	public $diff;
 	public $focus;
+	public $time;
 	public $protocol;
 	public $exercises = [];	
 

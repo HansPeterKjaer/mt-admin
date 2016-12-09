@@ -7,7 +7,7 @@
 	<meta name="description" content="error page">
 	<meta name="author" content="mytrainer">
 	<link rel="icon" href="../../favicon.ico">
-	<link href="<?php URLHelper::renderUrl('/assets/css/base.css')?>" rel="stylesheet">
+	<link href="<?php URLHelper::renderUrl('assets/css/base.css')?>" rel="stylesheet">
 
 	<title>MT ADMIN</title>
 </head>
@@ -20,6 +20,7 @@
 		</div>
 	  </div>
 	</div>
+	<?php Logger::consoleLog(); ?>
 </body>
 </html>	
  

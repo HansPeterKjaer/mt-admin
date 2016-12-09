@@ -2,7 +2,7 @@
 	$ex = $viewModel;
 ?>
 
-<form id="exercise-form" class="form-horizontal ajax-form" method="POST" action="<?php isset($ex) ? URLHelper::renderUrl('/AdminExercise/update') : URLHelper::renderUrl('/AdminExercise/insert'); ?>">
+<form id="exercise-form" class="form-horizontal ajax-form" method="POST" action="<?php isset($ex) ? URLHelper::renderUrl('AdminExercise/update') : URLHelper::renderUrl('AdminExercise/insert'); ?>">
 	<?php if(isset($ex)){ echo "<input id='' name='id' type='hidden' value='{$ex->id}'/>"; } ?>	
 	<div class="form-group">
 		<label for="inputTitle" class="col-sm-4 col-lg-2 control-label">Titel</label>			
@@ -46,13 +46,13 @@
 		<label class="col-sm-4 col-lg-2 control-label">Billeder</label> 
 		<div class="col-sm-8 col-lg-6">
 			<span class="btn btn-success btn-file">
-    			Upload billede<input class="btn-ex-upload" type="file" data-ex-controls="true" data-target-url="<?php URLHelper::renderUrl('/Media/insertImageJSON/'); ?>"></input>
+    			Upload billede<input class="btn-ex-upload" type="file" data-ex-controls="true" data-target-url="<?php URLHelper::renderUrl('Media/insertImageJSON/'); ?>"></input>
 			</span>
 			<!--button type="button" class="btn btn-info" id="">Importer fra mediearkiv</button-->
 			<div class="input-group pull-right">
-	      		<input id="input-import-image1" type="text" name="imageName" class="form-control input-import-image autocomplete autocomplete-thumb sub-query" value="" data-url="<?php URLHelper::renderUrl('/media/searchImageJson?term='); ?>" autocomplete="off" />
+	      		<input id="input-import-image1" type="text" name="imageName" class="form-control input-import-image autocomplete autocomplete-thumb sub-query" value="" data-url="<?php URLHelper::renderUrl('media/searchImageJson?term='); ?>" autocomplete="off" />
 	      		<span class="input-group-btn btn-import-image">
-	        		<button class="btn btn-default btn-import-image" for="input-import-image1" data-url="<?php URLHelper::renderUrl('/media/getImageJSON?imageName='); ?>" type="button">Importer fra mediearkiv</button>
+	        		<button class="btn btn-default btn-import-image" for="input-import-image1" data-url="<?php URLHelper::renderUrl('media/getImageJSON?imageName='); ?>" type="button">Importer fra mediearkiv</button>
 	      		</span>
 	      	</div>
 	      	<div class="upload-status"></div>

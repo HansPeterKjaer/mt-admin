@@ -23,11 +23,6 @@ module.exports = function (elm){
 	searchBtn = doc.getElementById(panel.getAttribute('data-search-btn-id'));
 	loadMoreBtn = doc.getElementById(panel.getAttribute('data-load-more-btn-id'));
 
-	//win.console && console.log(panel);
-	//win.console && console.log(filterElms);
-	//win.console && console.log(searchInput);
-	//win.console && console.log(searchBtn);
-
 	searchBtn && searchInput && searchBtn.addEventListener('click', search, false);
 	loadMoreBtn && loadMoreBtn.addEventListener('click', loadMore, false);
 	

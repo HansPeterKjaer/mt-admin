@@ -37,7 +37,7 @@
 				</tr>
 			</thead>
 
-			<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('/AdminWorkout/workoutListJson'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
+			<tbody class="ajax-panel" data-url="<?php URLHelper::renderUrl('AdminWorkout/workoutListJson'); ?>" data-filter-class="ajax-panel-filter" data-search-id="ajax-panel-search-input" data-search-btn-id="ajax-panel-search-btn" data-load-more-btn-id="ajax-panel-load-more" data-sort-class="ajax-panel-sort" >
 				<?php ViewHelper::renderPartial("workout/_workoutList", $viewModel->workouts); ?>
 			</tbody>
 		</table>

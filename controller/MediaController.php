@@ -1,6 +1,8 @@
 <?php 
 
 class MediaController extends SecureController{
+	private $uploadPath = SITEROOT . "/mtassets/exercise-images";
+
 	protected function indexAction(){
 		$viewModel = $this->modelFactory->buildObject('MediaListViewModel');
    		$mapper = $this->modelFactory->buildMapper('BaseViewModelMapper');
@@ -124,8 +126,8 @@ class MediaController extends SecureController{
 
 		$status = $mapper->deleteImage($id);
 		if($status['status'] == true){
-			@unlink("assets/uploads/{$status['imageName']}");
-			@unlink("assets/uploads/thumbs/{$status['imageName']}");
+			@unlink("{$this->uploadPath}/{$status['imageName']}");
+			@unlink("{$this->uploadPath}/thumbs/{$status['imageName']}");
 			$status['msg'] = 'Billedet er nu slettet';
 		}
 		else if ($status['exercises'] != null){
@@ -145,8 +147,8 @@ class MediaController extends SecureController{
 		$imageName = $model->imageName;
 
 		if ($result){
-			@unlink("assets/uploads/$imageName");
-			$moveStatus = move_uploaded_file($image['tmp_name'], "assets/uploads/$imageName");
+			@unlink("{$this->uploadPath}/$imageName");
+			$moveStatus = move_uploaded_file($image['tmp_name'], "{$this->uploadPath}/$imageName");
 			$status = ['status' => $moveStatus, 'msg'=> ($moveStatus) ? "Image sucessfully updated" : "Could not move image on server"];
 		}
 		else{
@@ -163,10 +165,10 @@ class MediaController extends SecureController{
 		$model = $this->modelFactory->buildObject('MediaModel');
 		$mapper->fetchImage($model, $id);
 
-		if (file_exists("assets/uploads/{$model->imageName}")){
+		if (file_exists("{$this->uploadPath}/{$model->imageName}")){
 			$status = $mapper->renameImage($id, $imageName);
 			if ($status['status'] == true){
-				rename("assets/uploads/{$model->imageName}", "assets/uploads/$imageName");	
+				rename("{$this->uploadPath}/{$model->imageName}", "{$this->uploadPath}/$imageName");	
 			}
 			$this->view->outputJSON($status);
 		}
@@ -176,7 +178,7 @@ class MediaController extends SecureController{
 	}
 
 	private function uploadImage($image, $imageName, $subPath = ''){
-		$targetDir = 'assets/uploads/' . $subPath;
+		$targetDir = "{$this->uploadPath}/" . $subPath;
 
 		$targetFile = $targetDir . $imageName;
 		$uploadStatus = false;
@@ -191,7 +193,7 @@ class MediaController extends SecureController{
 			$msg = 'File is not an image.';
 		}
 		else{
-    		if (move_uploaded_file($image['tmp_name'], $targetFile)){
+    		if (move_uploaded_file($image['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $targetFile)){
     			$uploadStatus = true;
     			$msg = "'$imageName' er nu uploadet. Id: $id ";
     		}

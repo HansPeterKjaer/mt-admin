@@ -4,7 +4,7 @@
 
 	<div class='col-sm-2 imagecontainer itemcontainer'>
 		<div class='thumbnail'>
-			<img src='<?php URLHelper::renderUrl("assets/uploads/$img->imageName"); ?>' data-id='<?php echo($img->id) ?>' />
+			<img src='<?php URLHelper::renderUrl("/mtassets/exercise-images/$img->imageName"); ?>' data-id='<?php echo($img->id) ?>' />
 			<div class='caption'>
 				<p>
 					<a href='<?php URLHelper::renderUrl("media/displayImage/$img->id"); ?>' ><?php echo($img->imageName) ?></a>

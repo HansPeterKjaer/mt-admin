@@ -125,12 +125,20 @@ class BaseApp{
 		    	if (array_key_exists('postVars', $r)){		    	
 			    	foreach($r['postVars'] as $p){
 			    		if(!array_key_exists($p, $postVars)){ 
-		    				$args = [];
-		    				continue(2);
+		    				if ($this->checkDefault($p, $r)){
+		    					$args[$p] = $defaults[$p];
+		    				}
+		    				else{
+		    					$args = [];
+		    					continue(2);
+		    				}
 		    			}
-			    		$args[$p] = $postVars[$p];	
+		    			else{
+		    				$args[$p] = $postVars[$p];
+		    			}	
 			    	}
 			    }
+
 			    if (array_key_exists('fileVars', $r)){		    	
 			    	foreach($r['fileVars'] as $p){
 			    		if(!array_key_exists($p, $fileVars)){ 
@@ -140,8 +148,18 @@ class BaseApp{
 			    		$args[$p] = $fileVars[$p];	
 			    	}
 			    }
+
 		    	return true;
 		  	}
+		}
+		die();
+		return false;
+	}
+
+	function checkDefault($name, $r){
+		if(array_key_exists('defaults', $r)){
+			var_dump($r['defaults']);
+			return array_key_exists($name, $r['defaults']);
 		}
 		return false;
 	}

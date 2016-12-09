@@ -13,23 +13,15 @@ var autocomplete = require('./modules/autocomplete.js');
 var ajax = require('./modules/ajax.js');
 var findAncestor = require('./modules/utils/findAncestor.js');
 var ajaxFormSubmit = require('./modules/ajaxFormSubmit.js');
-var scribeEditor = require('scribe-editor');
-var scribePluginToolbar = require('scribe-plugin-toolbar');
-var scribePluginSmartLists = require('scribe-plugin-smart-lists');
-var scribePluginHeadingCommand = require('scribe-plugin-heading-command');
-//var scribePluginContentCleaner = require('scribe-plugin-content-cleaner');
-
+var wysiwygEditor = require('./modules/wysiwyg');
+ // '../bower_components/scribe-plugin-formatter-plain-text-convert-new-lines-to-html/src/scribe-plugin-formatter-plain-text-convert-new-lines-to-html',
+ // '../bower_components/scribe-plugin-sanitizer/src/scribe-plugin-sanitizer',
 
 var wysiwygTextArea = doc.querySelector('.wysiwyg');
-if (wysiwygTextArea){
-	var toolbar = doc.querySelector('.toolbar');
-	var scribe = new scribeEditor(wysiwygTextArea);  
-	scribe.use(scribePluginSmartLists());
-	scribe.use(scribePluginHeadingCommand(2));
-	scribe.use(scribePluginToolbar(toolbar));
-	scribe.on('content-changed', function(){
-		wysiwygTextArea.parentNode.querySelector('.wysiwyg + textarea').value = scribe.getHTML();
-	});
+var toolbar = doc.querySelector('.toolbar');
+
+if (wysiwygTextArea && toolbar){
+	wysiwygEditor(wysiwygTextArea, toolbar);
 }
 
 

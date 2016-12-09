@@ -208,22 +208,26 @@
     {
         "controller": "adminWorkoutController",
         "action": "insertAction",
-        "postVars": ["name","diff","focus","descr","protocol","exercises"]
+        "postVars": ["name","diff","focus","time","descr","protocol","exercises"],
+        "defaults": [{"time": null}]
     },
     {
         "controller": "adminWorkoutController",
         "action": "insertAction",
-        "postVars": ["name","diff","focus","descr","protocol"]
+        "postVars": ["name","diff","focus","time","descr","protocol"],
+        "defaults": [{"time": null}]
     },
     {
         "controller": "adminWorkoutController",
         "action": "updateAction",
-        "postVars": ["id","name","diff","focus","descr","protocol","exercises"]
+        "postVars": ["id","name","diff","focus","time","descr","protocol","exercises"],
+        "defaults": {"time": null, "time2": null}
     },
     {
         "controller": "adminWorkoutController",
         "action": "updateAction",
-        "postVars": ["id","name","diff","focus","descr","protocol"]
+        "postVars": ["id","name","diff","focus","time","descr","protocol"],
+        "defaults": [{"time": null}]
     },
     {
         "controller": "adminWorkoutController",

@@ -57,15 +57,15 @@ class AdminWorkoutController extends SecureController{
 		$this->view->output('workout/createWorkout',$viewModel);
 	}
 
-	public function insertAction($name, $diff, $focus, $descr, $protocol, $exercises){	
+	public function insertAction($name, $diff, $focus, $time, $descr, $protocol, $exercises){	
 		$mapper = $this->modelFactory->buildMapper('WorkoutModelMapper');
-		$this->view->outputJSON($mapper->insert($name, $diff, $focus, $descr, $protocol, $exercises));
+		$this->view->outputJSON($mapper->insert($name, $diff, $focus, $time, $descr, $protocol, $exercises));
 	}
 
-	public function updateAction($id, $name, $diff, $focus, $descr, $protocol, $exercises = []){	
+	public function updateAction($id, $name, $diff, $focus, $time, $descr, $protocol, $exercises = []){	
 		$mapper = $this->modelFactory->buildMapper('WorkoutModelMapper');
 
-		$this->view->outputJSON( $mapper->update($id, $name, $diff, $focus, $descr, $protocol, $exercises) );
+		$this->view->outputJSON( $mapper->update($id, $name, $diff, $focus, $time, $descr, $protocol, $exercises) );
 	}
 
 	protected function deleteAction($id){

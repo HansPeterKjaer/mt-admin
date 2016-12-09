@@ -1,0 +1,29 @@
+.table {
+    font-size: 1em;
+    border: 1px solid #dddddd;
+    background: #fff;
+    margin: 15px 0;
+
+    /*td:last-child{
+        width:160px;
+    }*/
+
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.table > thead > tr {
+    background: #f1f1f1;
+    > th {
+    	border-bottom: 1px solid #dddddd;
+    	//border: none;
+    }
+}
