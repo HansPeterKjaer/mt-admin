@@ -17,22 +17,46 @@ var wysiwygEditor = require('./modules/wysiwyg');
  // '../bower_components/scribe-plugin-formatter-plain-text-convert-new-lines-to-html/src/scribe-plugin-formatter-plain-text-convert-new-lines-to-html',
  // '../bower_components/scribe-plugin-sanitizer/src/scribe-plugin-sanitizer',
 
+// text editor areas init:
 var wysiwygTextArea = doc.querySelector('.wysiwyg');
 var toolbar = doc.querySelector('.toolbar');
-
 if (wysiwygTextArea && toolbar){
 	wysiwygEditor(wysiwygTextArea, toolbar);
 }
 
-
-
-
+// ajax panels init
 var ajaxPanels = doc.querySelectorAll('.ajax-panel');
 for (var i = 0; i < ajaxPanels.length; ++i) {
 	ajaxPanel(ajaxPanels[i]);
 }
 
+// Ajax forms init:
+var ajaxForms = doc.querySelectorAll('.ajax-form');
+for (var i = 0; i < ajaxForms.length; ++i) {
+	ajaxFormSubmit(ajaxForms[i]);
+}
 
+// delet buttons init:
+var deletBtns = doc.querySelectorAll('a.ajax-delete');
+var ajaxDeleteBtn = require('./modules/ajaxDeleteBtn.js');
+for (var i = 0; i < deletBtns.length; ++i) {
+	ajaxDeleteBtn.init(deletBtns[i]);
+}
+
+
+// autocomplete init:
+var autoCompleteInputs = doc.querySelectorAll('input.autocomplete');
+for (var i = 0; i < autoCompleteInputs.length; ++i){
+	var url = autoCompleteInputs[i].getAttribute('data-url');
+	var subQuery = autoCompleteInputs[i].classList.contains('sub-query');
+	var thumbs = autoCompleteInputs[i].classList.contains('autocomplete-thumb');
+	autocomplete.init(autoCompleteInputs[i], url, subQuery, thumbs);
+	console.log("init" + subQuery + thumbs+url);
+}
+
+
+
+// image upload init:
 var imgUploadCB = function(status, data){
 	data = JSON.parse(data);
 
@@ -40,7 +64,6 @@ var imgUploadCB = function(status, data){
 		var imagePanel = doc.querySelector('.ajax-panel');
 		
 		imagePanel.insertAdjacentHTML('afterBegin', data.markup);
-
 		var lastChild = imagePanel.querySelector('.itemcontainer:last-child');
 		lastChild.remove();
 	}
@@ -52,24 +75,6 @@ var imgUploadCB = function(status, data){
 var uploadBtns = doc.querySelectorAll('.btn-upload-image');
 for (var i = 0; i < uploadBtns.length; ++i) {
 	imageUploader.init(uploadBtns[i], imgUploadCB);
-}
-
-
-var deletBtns = doc.querySelectorAll('a.ajax-delete');
-var ajaxDeleteBtn = require('./modules/ajaxDeleteBtn.js');
-for (var i = 0; i < deletBtns.length; ++i) {
-	ajaxDeleteBtn.init(deletBtns[i]);
-}
-
-
-var autoCompleteInputs = doc.querySelectorAll('input.autocomplete');
-
-for (var i = 0; i < autoCompleteInputs.length; ++i){
-	var url = autoCompleteInputs[i].getAttribute('data-url');
-	var subQuery = autoCompleteInputs[i].classList.contains('sub-query');
-	var thumbs = autoCompleteInputs[i].classList.contains('autocomplete-thumb');
-	autocomplete.init(autoCompleteInputs[i], url, subQuery, thumbs);
-	console.log("init" + subQuery + thumbs+url);
 }
 
 // Create exercise: upload image callback
@@ -86,8 +91,6 @@ var exImgUploadCB = function(status, data){
 	}
 }
 
-
-// imageUpload on create/update exercise page
 var exUploadBtns = doc.querySelectorAll('.btn-ex-upload');
 for (var i = 0; i < exUploadBtns.length; ++i) {
 		imageUploader.init(exUploadBtns[i], exImgUploadCB);
@@ -187,8 +190,11 @@ if (target) {
 	observer.observe(target, {childList: true});  
 }
 
-
-var ajaxForms = doc.querySelectorAll('.ajax-form');
-for (var i = 0; i < ajaxForms.length; ++i) {
-	ajaxFormSubmit(ajaxForms[i]);
+// Mobile menu toggler
+var navbarToggle = doc.querySelector('.navbar-toggle');
+if(navbarToggle){
+	navbarToggle.addEventListener('click', function(evt){
+		this.classList.toggle('collapsed');
+		doc.querySelector('body').classList.toggle('mobile-menu-visible');
+	});
 }

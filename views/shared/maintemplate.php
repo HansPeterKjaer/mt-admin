@@ -25,7 +25,7 @@
             </button>
           <a class="navbar-brand" href="<?php URLHelper::renderURL('adminHome'); ?>"><img src="<?php URLHelper::renderURL('assets/images/mtlogo_b_inv.png') ?>" alt="MyTrainer Logo" /></a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="top-navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="<?php echo site_url() ?>" class=" pull-right">Blog</a></li>
               <li><a href="<?php URLHelper::renderUrl('app/generateworkout'); ?>" class="pull-right">Generator</a></li>
@@ -35,7 +35,7 @@
         </div>
       </div>
     </nav>
-    <div class="sidebar">
+    <div id="side-navbar" class="sidebar">
       <?php if($viewModel->menuItems) : ?>
         <?php ViewHelper::renderPartial("shared/menu", $viewModel);?>
       <?php endif; ?>
