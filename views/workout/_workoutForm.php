@@ -2,7 +2,7 @@
 	$wo = $viewModel->workout;
 ?>
 
-<form id="workout-form" class="form-horizontal ajax-form" method="POST" action="<?php ($wo->id != null) ? URLHelper::renderUrl('AdminWorkout/update') : URLHelper::renderUrl('AdminWorkout/insert'); ?>" >
+<form id="workout-form" class="form form-horizontal ajax-form" method="POST" action="<?php ($wo->id != null) ? URLHelper::renderUrl('AdminWorkout/update') : URLHelper::renderUrl('AdminWorkout/insert'); ?>" >
 	<input name="id" type="hidden" value="<?php echo $wo->id; ?>" />
 	<div class="form-group">
 		<label for="inputName" class="col-sm-4 col-md-2 control-label">Titel (Intern)</label>			
@@ -36,9 +36,11 @@
 	</div>
 	<div class="form-group">
 		<label for="inputFocus" class="col-sm-4 col-md-2 control-label">Tid</label>		
-		<div class="col-sm-4">
+		<div class="col-sm-4 flex-align">
+			<label>
+				<input class="xl right-margin-sm" type="checkbox" id="input-check-time" onchange="document.getElementById('inputTime').disabled = !this.checked;" /> 
+			</label>
 			<input class="form-control" type="number" min="0" id="inputTime" disabled="true" name="time" value="<?php echo $wo->time; ?>" />
-			<label><input class="" type="checkbox" id="input-check-time" onchange="document.getElementById('inputTime').disabled = !this.checked;" /></label>
 		</div>
 	</div>
 	<div class="form-group hidden">
@@ -68,7 +70,7 @@
 			<div class="input-group import-status">
 	      		<input id="input-import-exercise" type="text" name="exercise" class="form-control autocomplete" value="" data-url="<?php URLHelper::renderUrl('AdminExercise/exerciseListJson'); ?>" autocomplete="off" />
 	      		<span class="input-group-btn">
-	        		<button class="btn btn-default btn-import-exercise" for="input-import-exercise" data-url="<?php URLHelper::renderUrl('adminexercise/ExerciseJSON?controls=true'); ?>" type="button">Importer øvelse</button>
+	        		<button class="btn btn-default btn-import-exercise" for="input-import-exercise" data-url="<?php URLHelper::renderUrl('adminexercise/ExerciseJSON?controls=true'); ?>" disabled="true" type="button">Importer øvelse</button>
 	      		</span>
 	      	</div>
 	    </div>

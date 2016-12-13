@@ -14,8 +14,6 @@ var ajax = require('./modules/ajax.js');
 var findAncestor = require('./modules/utils/findAncestor.js');
 var ajaxFormSubmit = require('./modules/ajaxFormSubmit.js');
 var wysiwygEditor = require('./modules/wysiwyg');
- // '../bower_components/scribe-plugin-formatter-plain-text-convert-new-lines-to-html/src/scribe-plugin-formatter-plain-text-convert-new-lines-to-html',
- // '../bower_components/scribe-plugin-sanitizer/src/scribe-plugin-sanitizer',
 
 // text editor areas init:
 var wysiwygTextArea = doc.querySelector('.wysiwyg');
@@ -43,18 +41,16 @@ for (var i = 0; i < deletBtns.length; ++i) {
 	ajaxDeleteBtn.init(deletBtns[i]);
 }
 
-
 // autocomplete init:
 var autoCompleteInputs = doc.querySelectorAll('input.autocomplete');
+
 for (var i = 0; i < autoCompleteInputs.length; ++i){
 	var url = autoCompleteInputs[i].getAttribute('data-url');
 	var subQuery = autoCompleteInputs[i].classList.contains('sub-query');
 	var thumbs = autoCompleteInputs[i].classList.contains('autocomplete-thumb');
 	autocomplete.init(autoCompleteInputs[i], url, subQuery, thumbs);
-	console.log("init" + subQuery + thumbs+url);
+	//console.log("init" + subQuery + thumbs+url);
 }
-
-
 
 // image upload init:
 var imgUploadCB = function(status, data){
@@ -111,6 +107,7 @@ for (var i = 0; i < imgImportSubmits.length; ++i){
 
 // Create workout: add exercise 
 var exImportSubmits = doc.querySelectorAll('.btn-import-exercise');
+
 for (var i = 0; i < exImportSubmits.length; ++i){
 	var submitBtn = exImportSubmits[i];
 	var input = doc.querySelector('#' + submitBtn.getAttribute('for'));
@@ -127,6 +124,16 @@ for (var i = 0; i < exImportSubmits.length; ++i){
 			alertMsg.init("Ingen øvelse valgt!", doc.querySelector('.import-status'));
 		}
 		
+	});
+
+	// listen for event to enable / disable button:
+	autoCompleteInputs[0].addEventListener('awesomplete-close', function(obj){
+		if(obj.reason == 'select'){  // submit?
+			submitBtn.disabled = false;
+		}
+		else{
+			submitBtn.disabled = true;
+		}
 	});
 
 	function exImportCB(status, data){

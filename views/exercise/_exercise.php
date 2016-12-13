@@ -1,4 +1,4 @@
-<div class='col-sm-2 imagecontainer itemcontainer'>
+<div class='col-xs-6 col-sm-4 col-md-3 col-lg-2 imagecontainer itemcontainer'>
 	<div class='thumbnail' data-id='<?php echo $viewModel->id; ?>'>
 		<img src='<?php URLHelper::renderUrl("/mtassets/exercise-images/{$viewModel->images->items[0]->imageName}"); ?>' />
 		<div class='caption'>

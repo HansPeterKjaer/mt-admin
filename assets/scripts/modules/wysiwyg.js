@@ -1,4 +1,5 @@
 'use strict'
+
 var doc = document;
 var win = window;
 
@@ -12,7 +13,7 @@ var scribePluginContentCleaner = require('./third/scribe-plugin-content-cleaner'
 
 module.exports = function(wysiwygTextArea, toolbar){
 	
-	var scribe = new scribeEditor();  
+	var scribe = new scribeEditor(wysiwygTextArea);  
 
 	scribe.use(scribePluginSmartLists());
 	scribe.use(scribePluginHeadingCommand(2));
@@ -30,7 +31,9 @@ module.exports = function(wysiwygTextArea, toolbar){
 			li: {},
 			blockquote: {}
 			}}));
+
 	scribe.use(scribePluginToolbar(toolbar));
+	
 	scribe.on('content-changed', function(){
 		//wysiwygTextArea.parentNode.querySelector('.wysiwyg').value = scribe.getHTML();
 		wysiwygTextArea.value = scribe.getHTML();
