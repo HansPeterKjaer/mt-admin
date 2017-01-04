@@ -121,7 +121,7 @@ for (var i = 0; i < exImportSubmits.length; ++i){
 			ajax.get(url, exImportCB);  
 		}
 		else{
-			alertMsg.init("Ingen øvelse valgt!", doc.querySelector('.import-status'));
+			alertMsg.init("Ingen øvelse valgt!", doc.querySelector('.import-status'), 'alert-danger', 'after');
 		}
 		
 	});
@@ -144,7 +144,7 @@ for (var i = 0; i < exImportSubmits.length; ++i){
 			itemContainer.querySelector('.itemplaceholder') && itemContainer.querySelector('.itemplaceholder').remove();
 		}
 		else{
-			alertMsg.init(data.msg, doc.querySelector('.import-status')); 
+			alertMsg.init(data.msg, doc.querySelector('.import-status'), 'alert-danger', 'after'); 
 		}
 	}
 }

@@ -2,7 +2,7 @@
 	foreach($viewModel->items as $img){ 
 ?>
 
-	<div class='col-sm-2 imagecontainer itemcontainer'>
+	<div class='col-xs-6 col-sm-4 col-md-3 col-lg-2 imagecontainer itemcontainer'>
 		<div class='thumbnail'>
 			<img src='<?php URLHelper::renderUrl("/mtassets/exercise-images/$img->imageName"); ?>' data-id='<?php echo($img->id) ?>' />
 			<div class='caption'>
