@@ -35,12 +35,12 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputFocus" class="col-sm-4 col-md-2 control-label">Tid</label>		
+		<label for="inputFocus" class="col-sm-4 col-md-2 control-label">Tid (Min)</label>		
 		<div class="col-sm-4 flex-align">
 			<label>
 				<input class="xl right-margin-sm" type="checkbox" id="input-check-time" onchange="document.getElementById('inputTime').disabled = !this.checked;" /> 
 			</label>
-			<input class="form-control" type="number" min="0" id="inputTime" disabled="true" name="time" value="<?php echo $wo->time; ?>" />
+			<input class="form-control time-input" type="number" min="0" id="inputTime" disabled="true" name="time" max="30" min="0" value="<?php echo $wo->time; ?>" />
 		</div>
 	</div>
 	<div class="form-group hidden">
@@ -103,7 +103,8 @@
 		</div>
 	</div>
 
-
+	<div class="form-msg"></div>
+	
 	<div class="form-group form-msg">
 		<div class="col-sm-12 btn-group">
 			<button id="btn-submit-workout" class="pull-right btn btn-success" type="submit">Opdater workout</button>

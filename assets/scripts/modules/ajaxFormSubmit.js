@@ -10,11 +10,13 @@ module.exports = function (form){
 		evt.preventDefault();
 		var fd = new FormData(form);
 		var url = this.getAttribute('action');
+	  	
 	  	ajax.post(url, fd, function(status, data){
 			data = JSON.parse(data);
 			var msgClass = (status == 200 && data.status == true) ? 'alert-success' : 'alert-danger';
-			var target = doc.querySelector(data.input) || doc.querySelector('.form-msg') || form;			
+			var target = doc.querySelector(data.input) || doc.querySelector('.form-msg') || form;	
 			alertMsg.init(data.msg, target, msgClass, true); 
 	  	});
+
 	}, false);
 }

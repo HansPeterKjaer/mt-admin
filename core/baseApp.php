@@ -126,7 +126,7 @@ class BaseApp{
 			    	foreach($r['postVars'] as $p){
 			    		if(!array_key_exists($p, $postVars)){ 
 		    				if ($this->checkDefault($p, $r)){
-		    					$args[$p] = $defaults[$p];
+		    					$args[$p] = $r['defaults'][$p];
 		    				}
 		    				else{
 		    					$args = [];
@@ -158,7 +158,6 @@ class BaseApp{
 
 	function checkDefault($name, $r){
 		if(array_key_exists('defaults', $r)){
-			var_dump($r['defaults']);
 			return array_key_exists($name, $r['defaults']);
 		}
 		return false;
