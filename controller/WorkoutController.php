@@ -1,6 +1,6 @@
 <?php
 
-class AdminWorkoutController extends SecureController{
+class WorkoutController extends SecureController{
 
 	public function indexAction(){
 		$viewModel = $this->modelFactory->buildObject('WorkoutListViewModel');
@@ -30,7 +30,7 @@ class AdminWorkoutController extends SecureController{
 		$this->view->outputJSON(['html' => $html, 'pages' => $workoutListModel->totalPages]);
 	}
 
-	public function displayAction($wo_id){
+	public function editAction($wo_id){
 		$viewModel = $this->modelFactory->buildObject('WorkoutViewModel');
 		$mapper = $this->modelFactory->buildMapper('WorkoutViewModelMapper');
 		$mapper->init($viewModel);

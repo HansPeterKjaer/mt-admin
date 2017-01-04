@@ -24,7 +24,7 @@ class BaseViewModelMapper extends BaseModelMapper{
 				  	[
 				  		'linkId' => 'workouts',
 						'linkText' => 'Workouts', 
-				  		'link' => URLHelper::getURL('/AdminWorkout/')
+				  		'link' => URLHelper::getURL('/Workout/')
 				  	],
 				  	[
 				  		'linkId' => 'protocols',

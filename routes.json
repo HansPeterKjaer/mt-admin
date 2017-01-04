@@ -183,54 +183,54 @@
         "action": "indexAction"
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "createAction"
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "deleteAction",
         "postVars": ["id"]
     },
     {
-        "controller": "adminWorkoutController",
-        "action": "displayAction",
+        "controller": "WorkoutController",
+        "action": "editAction",
         "getVars": [],
         "postVars": [],
         "urlVars": 1
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "indexAction",
         "getVars": [],
         "postVars": [],
         "urlVars": 0
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "insertAction",
         "postVars": ["name","diff","focus","time","descr","protocol","exercises"],
         "defaults": [{"time": null}]
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "insertAction",
         "postVars": ["name","diff","focus","time","descr","protocol"],
         "defaults": [{"time": null}]
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "updateAction",
         "postVars": ["id","name","diff","focus","time","descr","protocol","exercises"],
         "defaults": {"time": null, "time2": null}
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "updateAction",
         "postVars": ["id","name","diff","focus","time","descr","protocol"],
         "defaults": [{"time": null}]
     },
     {
-        "controller": "adminWorkoutController",
+        "controller": "WorkoutController",
         "action": "workoutListJsonAction",
         "getVars": ["page", "term", "filter"]
     },

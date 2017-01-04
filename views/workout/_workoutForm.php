@@ -2,7 +2,7 @@
 	$wo = $viewModel->workout;
 ?>
 
-<form id="workout-form" class="form form-horizontal ajax-form" method="POST" action="<?php ($wo->id != null) ? URLHelper::renderUrl('AdminWorkout/update') : URLHelper::renderUrl('AdminWorkout/insert'); ?>" >
+<form id="workout-form" class="form form-horizontal ajax-form" method="POST" action="<?php ($wo->id != null) ? URLHelper::renderUrl('Workout/update') : URLHelper::renderUrl('Workout/insert'); ?>" >
 	<input name="id" type="hidden" value="<?php echo $wo->id; ?>" />
 	<div class="form-group">
 		<label for="inputName" class="col-sm-4 col-md-2 control-label">Titel (Intern)</label>			
