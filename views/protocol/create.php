@@ -12,7 +12,6 @@
 		<div class="col-sm-8 col-md-6">	
 			<?php ViewHelper::renderPartial("shared/scribetoolbar", $viewModel);?>
 			<div class="form-control wysiwyg" id="inputDescr"></div>
-			<textarea name="descr"></textarea>
 		</div>
 	</div>
 	<div class="form-group">

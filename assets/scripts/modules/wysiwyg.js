@@ -35,7 +35,7 @@ module.exports = function(wysiwygTextArea, toolbar){
 	scribe.use(scribePluginToolbar(toolbar));
 	
 	scribe.on('content-changed', function(){
-		//wysiwygTextArea.parentNode.querySelector('.wysiwyg').value = scribe.getHTML();
-		wysiwygTextArea.value = scribe.getHTML();
+		wysiwygTextArea.parentNode.querySelector('textarea').value = scribe.getHTML();
+		//wysiwygTextArea.value = scribe.getHTML();
 	});	
 }

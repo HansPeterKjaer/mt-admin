@@ -90,20 +90,6 @@ class WorkoutModelMapper extends BaseModelMapper{
 		return ['status' => $status, 'msg' => $msg];
     } 
 
-    /*public function fetch(WorkoutModel &$model){
-    	$dbh = $this->dbhandle;
-    	$stmt = $dbh->prepare("select * from workout where wo_id = :id");
-		$stmt->execute(array(':id' => $model->id));
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
-		
-		if (!empty($row)){
-    		$model->id = $row['wo_id'];
-    		$model->name = $row['wo_name'];
-			$model->diff = $row['wo_diff'];
-			$model->focus = $row['wo_focus'];
-			$model->descr = $row['wo_desc'];
-		}
-    }*/
     public function fetchById(WorkoutModel &$model, $id){
     	$dbh = $this->dbhandle;
     	try{
@@ -142,10 +128,6 @@ class WorkoutModelMapper extends BaseModelMapper{
 		    return false;
 		}
     }
-
-    /*public function fetchAll(WorkoutListModel &$model){
-    	return $this->search($model, 0);
-	}*/
 
 	public function search(WorkoutListModel &$model, $itemsPerPage = 20, $page = 0, $term = '', $firstLetter = '', $sort = null, $diff = null, $focus = null){
     	$dbh = $this->dbhandle;
@@ -230,72 +212,6 @@ class WorkoutModelMapper extends BaseModelMapper{
 		return ['success' => $success, 'msg' => $msg];
 	}
 
-/*	public function fetchBySearchData(Array &$model, $term, $diff, $focus){
-    	$dbh = $this->dbhandle;
-    	$success = false;
-    	$msg = "";
-
-    	try {
-    		if(empty($term) && empty($diff) && empty($focus)) throw new Exception('Error: No search data provided');
-
-	    	$sql = "SELECT 
-	    			wo_id, 
-	    			wo_name, 
-	    			wo_diff, 
-	    			wo_focus, 
-	    			wo_desc, 
-	    			wo_pr_id,
-	    			pr_id,
-	    			pr_name,
-	    			pr_desc FROM workout JOIN protocol ON workout.wo_pr_id = protocol.pr_id ";
-	    	
-	    	if (!empty($term) && !empty($diff) && !empty($focus)) $sql .= "WHERE wo_name LIKE :term AND wo_diff = :diff AND wo_focus = :focus";
-	    	else if (!empty($term) && !empty($focus)) $sql .= " WHERE wo_name LIKE :term AND  wo_focus = :focus";
-	    	else if (!empty($term) && !empty($diff)) $sql .= " WHERE wo_name LIKE :term AND wo_diff = :diff";
-	    	else if (!empty($focus) && !empty($diff)) $sql .= " WHERE wo_focus LIKE :focus' AND wo_diff = :diff";
-	    	else if (!empty($term)) $sql .= " WHERE wo_name LIKE :term";
-			else if (!empty($diff)) $sql .= " WHERE wo_diff = :diff";
-	    	else if (!empty($focus)) $sql .= " WHERE wo_focus = :focus";
-	    	
-	    	$stmt = $dbh->prepare($sql);
-	    	if (!empty($term)) $stmt->bindValue(':term', '%' . $term .'%');
-			if (!empty($diff)) $stmt->bindParam(':diff', $diff);
-		    if (!empty($focus)) $stmt->bindParam(':focus', $focus);
-
-			$stmt->execute();
-
-			while (($row = $stmt->fetch(PDO::FETCH_ASSOC)) !== false) {
-			   $workout = new WorkoutModel();
-			   $workout->id = $row['wo_id'];
-			   $workout->name = $row['wo_name'];
-			   $workout->diff = $row['wo_diff'];
-			   $workout->focus = $row['wo_focus'];
-			   $workout->descr = $row['wo_desc'];
-			   $protocol = new ProtocolModel();
-			   $protocol->id = $row['pr_id'];
-			   $protocol->name = $row['pr_name'];
-			   $protocol->descr = $row['pr_desc'];
-			   $workout->prtc = $protocol;
-
-			   $stmt2 = $dbh->prepare("SELECT workout_exercise.ex_id AS id , ex_name AS name, ex_diff AS diff, ex_focus AS focus, ex_desc AS descr, ex_img AS img FROM exercise, workout_exercise WHERE workout_exercise.wo_id = :wo_id AND exercise.ex_id = workout_exercise.ex_id");
-			   $stmt2->bindParam(':wo_id', $row['wo_id']);
-			   $stmt2->execute();
-			   $exercises = $stmt2->fetchAll(PDO::FETCH_CLASS, "exerciseModel");
-			   $workout->exercises = $exercises;
-			   $model[] = $workout;
-			}
-			//$model = $stmt->fetchAll(PDO::FETCH_CLASS, "WorkoutModel");
-			$msg = "fetched " . count($model) . " rows";
-			$success = true;
-
-		} catch (Exception $e) {
-			if (@constant('DEVELOPMENT_ENVIRONMENT') == false)
-				$msg = "db error could not perform request";
-			else
-				$msg = $e->xdebug_message;
-		}
-		return ['success' => $success, 'msg' => $msg];
-    }*/
     public function delete($id){
     	$dbh = $this->dbhandle;
     	
