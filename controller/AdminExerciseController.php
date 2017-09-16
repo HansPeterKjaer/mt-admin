@@ -8,7 +8,7 @@ class AdminExerciseController extends SecureController{
 
 		$exerciseListModel = $this->modelFactory->buildObject('ExerciseListModel');
 		$exerciseModelMapper = $this->modelFactory->buildMapper('ExerciseModelMapper');
-    	$exerciseModelMapper->search($exerciseListModel, 10, 1);
+    	$exerciseModelMapper->search($exerciseListModel, 20, 1);
 
     	$viewModel->exercises = $exerciseListModel;
 
@@ -20,7 +20,7 @@ class AdminExerciseController extends SecureController{
 	public function exerciseListPanelAction($page, $term, $filter, $sort){
 		$exerciseListModel = $this->modelFactory->buildObject('ExerciseListModel');
 		$exerciseModelMapper = $this->modelFactory->buildMapper('ExerciseModelMapper');
-    	$exerciseModelMapper->search($exerciseListModel, 10, $page, $term, $filter, $sort);
+    	$exerciseModelMapper->search($exerciseListModel, 20, $page, $term, $filter, $sort);
 
     	ob_start();
 			$this->view->output('/exercise/_exerciseList', $exerciseListModel, false);			 

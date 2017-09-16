@@ -253,21 +253,6 @@
         "action": "WorkoutAction"
     },
     {
-        "controller": "jsonController",
-        "action": "getWorkoutByIdAction",
-        "urlVars": 1
-    },
-    {
-        "controller": "jsonController",
-        "action": "searchExerciseAction",
-        "getVars": ["term","diff","focus"]
-    },
-    {
-        "controller": "jsonController",
-        "action": "searchWorkoutAction",
-        "getVars": ["term","diff","focus"]
-    },
-    {
         "controller": "loginController",
         "action": "indexAction",
         "getVars": [],

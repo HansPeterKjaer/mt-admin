@@ -149,7 +149,7 @@ class ExerciseModelMapper extends BaseModelMapper{
 
 		$page = $page; 
 		$offset = ($page > 0) ? ($page - 1) * $itemsPerPage : 0;
-		$limit = ($itemsPerPage == 0) ? 999999 : $offset + $itemsPerPage; // if itemsperpage == 0 -> take all 
+		$limit = ($itemsPerPage == 0) ? 999999 : $itemsPerPage; 
 
 		$sqlCondition = '';
 		
@@ -169,10 +169,9 @@ class ExerciseModelMapper extends BaseModelMapper{
 
 		$sqlCount = "SELECT COUNT(*) FROM exercise {$sqlCondition}";
 		$sqlSelect = "SELECT ex_id AS id, ex_name AS name, ex_diff AS diff, ex_focus AS focus, ex_desc AS descr, ex_img as img FROM exercise {$sqlCondition} {$sortStatement} LIMIT :offset, :limit ";
-		//echo $sqlSelect;
 
     	try {
-    		// get count;
+
     		$stmt = $dbh->prepare($sqlCount);	
 			
 			if (!empty($term))  		$stmt->bindParam(':term', $term);

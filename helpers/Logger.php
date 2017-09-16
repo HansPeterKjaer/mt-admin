@@ -17,14 +17,16 @@ class Logger {
         return self::$_instance;
  	}
  	public static function log($output){
- 		if(self::$_instance->dev){
- 			if(is_array($output)){
- 				self::$_instance->msg .= var_export($output, true) . '\n\n';
- 			}
- 			else{
- 				self::$_instance->msg .= $output. '\n\n';
- 			}
- 		}
+		$msg = "";
+		if(is_array($output))
+			$msg = var_export($output, true) . '\n\n';
+		else
+			$msg .= $output. '\n\n';
+
+ 		if(self::$_instance->dev)
+ 			echo $msg;
+ 		else
+ 			self::$_instance->msg .= $msg; 
  	}
  	public static function consoleLog(){
  		echo '<script>console.log(' . json_encode(self::$_instance->msg) . ');</script>';

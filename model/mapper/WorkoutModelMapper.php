@@ -136,7 +136,7 @@ class WorkoutModelMapper extends BaseModelMapper{
 
 		$page = $page; 
 		$offset = ($page > 0) ? ($page - 1) * $itemsPerPage : 0;
-		$limit = ($itemsPerPage == 0) ? 999999 : $offset + $itemsPerPage; // if itemsperpage == 0 -> take all 
+		$limit = ($itemsPerPage == 0) ? 999999 : $itemsPerPage; // if itemsperpage == 0 -> take all 
 
 		$sqlCondition = '';
 		

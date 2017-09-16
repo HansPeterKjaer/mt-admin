@@ -9,7 +9,7 @@ class WorkoutController extends SecureController{
 
 		$workoutListModel = $this->modelFactory->buildObject('WorkoutListModel');
 		$workoutModelMapper = $this->modelFactory->buildMapper('WorkoutModelMapper');
-    	$workoutModelMapper->search($workoutListModel, 10, 1);
+    	$workoutModelMapper->search($workoutListModel, 20, 1);
 
     	$viewModel->workouts = $workoutListModel;
 
@@ -21,7 +21,7 @@ class WorkoutController extends SecureController{
 	public function workoutListJsonAction($page, $term, $filter){
 		$workoutListModel = $this->modelFactory->buildObject('WorkoutListModel');
 		$workoutModelMapper = $this->modelFactory->buildMapper('WorkoutModelMapper');
-    	$workoutModelMapper->search($workoutListModel, 10, $page, $term, $filter);
+    	$workoutModelMapper->search($workoutListModel, 20, $page, $term, $filter);
 
     	ob_start();
 			$this->view->output('/workout/_workoutList', $workoutListModel, false);			 

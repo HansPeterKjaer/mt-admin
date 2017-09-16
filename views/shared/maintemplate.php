@@ -27,8 +27,8 @@
         </div>
         <div id="top-navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="<?php echo site_url() ?>" class=" pull-right">Blog</a></li>
-              <li><a href="<?php URLHelper::renderUrl('app/generateworkout'); ?>" class="pull-right">Generator</a></li>
+              <li><a href="<?php URLHelper::renderUrl('/blog'); ?>" class=" pull-right">Blog</a></li>
+              <li><a href="<?php echo site_url() ?>" class="pull-right">Generator</a></li>
               <li><a href="/blog/wp-admin" class="pull-right">Blog Admin</a></li>
               <li><a href="<?php echo wp_logout_url(); ?>" class="pull-right">Log Out</a></li>
             </ul>

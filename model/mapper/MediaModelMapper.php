@@ -41,7 +41,7 @@ class MediaModelMapper extends BaseModelMapper{
 		$itemsPerPage = 24;
 		$page = is_int($page) ? $page : 0; 
 		$skip = ($page > 0) ? ($page - 1) * $itemsPerPage : 0;
-		$max = ($page === 0) ? 999999 : $skip + $itemsPerPage; // if page == 0 -> take all 
+		$max = ($page === 0) ? 999999 : $itemsPerPage; // if page == 0 -> take all 
 		$term = "%$term%";
 		$firstLetter = "$firstLetter%";
 
